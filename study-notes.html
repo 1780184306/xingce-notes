@@ -185,6 +185,11 @@
   p { margin: 0.6rem 0; }
 
   strong { color: var(--ink); font-weight: 600; }
+  /* 深色底容器内的 strong 必须继承亮色，
+     否则被上一行全局规则染成深墨蓝，深底上不可读（2026-09-08 预防性修复） */
+  .mindmap-center-node strong,
+  .mindmap-branch-header strong,
+  .day-counter strong { color: inherit; }
 
   mark.key {
     background: none;
