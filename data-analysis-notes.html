@@ -358,15 +358,15 @@
 
   /* Formula box */
   .formula-box {
-    background: linear-gradient(135deg, #1e3a5f 0%, #1e3a8a 100%);
-    color: #fff;
-    padding: 1.2rem 1.5rem;
+    background: linear-gradient(135deg, #14304f 0%, #17307a 100%);
+    color: #f8fafc;
+    padding: 1.35rem 1.5rem;
     border-radius: 10px;
     margin: 1rem 0;
     text-align: center;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
     font-weight: 600;
-    box-shadow: 0 4px 12px rgba(30,58,95,0.25);
+    box-shadow: 0 4px 12px rgba(20,48,79,0.3);
   }
   .formula-box .formula-label {
     font-size: 0.85rem;
@@ -383,6 +383,27 @@
   .formula-box .formula .highlight {
     color: #ffd479;
   }
+  /* 深色底容器内的 strong 必须继承亮色，
+     否则被全局 strong{color:var(--ink)} 覆盖成深墨蓝，
+     深蓝底上几乎不可读（2026-09-08 修复） */
+  .formula-box strong,
+  .formula-box b,
+  .mindmap-center-node strong,
+  .mindmap-branch-header strong,
+  .day-counter strong {
+    color: inherit;
+  }
+  /* 公式框排版优化：加大行距与字号，公式用等宽字体 */
+  .formula-box p {
+    margin: 0.55rem 0;
+    line-height: 1.85;
+    font-variant-numeric: tabular-nums;
+    font-family: "Consolas", "SF Mono", "Menlo", "Courier New",
+                 "Noto Sans CJK SC", "Microsoft YaHei", monospace;
+    letter-spacing: 0.01em;
+  }
+  .formula-box p:first-child { margin-top: 0; }
+  .formula-box p:last-child { margin-bottom: 0; }
 
   /* Takeaways */
   .takeaways {
