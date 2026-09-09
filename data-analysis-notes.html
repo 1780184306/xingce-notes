@@ -579,11 +579,11 @@
 <!-- ===== Hero ===== -->
 <header class="hero">
   <h1>资料分析 · 学习笔记</h1>
-  <p class="subtitle">基期现期 | 增长量增长率 | 经济术语 | 速算技巧</p>
+  <p class="subtitle">基期现期 | 增长量增长率 | 经济术语 | 速算技巧 | 分数比较</p>
   <div class="meta">
     <span>贵州省考 · 事业单位联考</span>
-    <span>2026-09-04</span>
-    <span>Day 3 · 速算技巧进阶</span>
+    <span>2026-09-09</span>
+    <span>Day 4 · 分数比较</span>
   </div>
 </header>
 
@@ -605,7 +605,8 @@
     <li><a href="#sec10">速算技巧：多步连除</a></li>
     <li><a href="#sec11">判大小：分式 vs 1</a></li>
     <li><a href="#sec12">特殊分数</a></li>
-    <li><a href="#sec13">口诀总结</a></li>
+    <li><a href="#sec13">分数比较 —— 除首位 + 看增速</a></li>
+    <li><a href="#sec14">口诀总结</a></li>
   </ol>
   <div class="progress-wrap">
     <div class="progress-label">
@@ -2138,9 +2139,103 @@
   </div>
 </section>
 
-<!-- ===== Section 13: 口诀总结 ===== -->
+<!-- ===== Section 13: 分数比较 ===== -->
 <section id="sec13">
-  <h2 class="section-title"><span class="num">13</span>口诀总结</h2>
+  <h2 class="section-title"><span class="num">13</span>分数比较 —— 除首位 + 看增速</h2>
+
+  <p>比重、平均数、倍数类的比较题，本质都是<strong>几个分数比大小</strong>：四个选项四个分数，找最大或最小。两板斧按顺序用：<strong>先"除首位"，分不出胜负再"看增长速度"</strong>。</p>
+
+  <div class="callout success">
+    <span class="callout-title">一句话总纲</span>
+    <p><strong>先除首位定大半，首位相同看增速 —— 分子跑得快，分数就变大。</strong></p>
+  </div>
+
+  <h3>方法一：除首位（直除法）</h3>
+
+  <p>每个分数<strong>只除出第一位</strong>，首位大的分数就大；首位相同再除第二位。分母用截位直除截两三位就够，不用精确算完。</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>分数</th>
+          <th>除首位</th>
+          <th>第二位</th>
+          <th>结论</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>456 ÷ 78</td>
+          <td>5（78×6=468 超了）</td>
+          <td>—</td>
+          <td>先淘汰</td>
+        </tr>
+        <tr>
+          <td>512 ÷ 82</td>
+          <td>6（82×6=492）</td>
+          <td>≈ 6.24</td>
+          <td><strong>最大</strong></td>
+        </tr>
+        <tr>
+          <td>489 ÷ 81</td>
+          <td>6（81×6=486）</td>
+          <td>≈ 6.04</td>
+          <td>其次</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>方法二：看增长速度（增速比较法）</h3>
+
+  <p>两个分数挨得近、除首位分不出胜负时，比<strong>分子增速</strong>和<strong>分母增速</strong>：</p>
+  <ul>
+    <li>分子增速 &gt; 分母增速 → <strong>后一个分数大</strong></li>
+    <li>分子增速 &lt; 分母增速 → <strong>前一个分数大</strong></li>
+  </ul>
+
+  <p>例：比较 233/456 与 256/487 —— 分子 233→256 涨 23，23÷233 ≈ <strong>10%</strong>；分母 456→487 涨 31，31÷456 ≈ <strong>7%</strong>。分子涨得快 → <strong>256/487 更大</strong>（验证：0.511 &lt; 0.526 ✓）。</p>
+
+  <div class="callout info">
+    <span class="callout-title">为什么成立</span>
+    <p>256/487 = (233/456) × (1+10%) ÷ (1+7%) —— 就是第 11 节的"分式 vs 1"：分子增速 a &gt; 分母增速 b，乘出来的因子大于 1，分数自然变大。</p>
+  </div>
+
+  <div class="callout danger">
+    <span class="callout-title">增速陷阱（最高频错法）</span>
+    <p>增速是<strong>涨量 ÷ 各自的基数</strong>，不是拿涨的绝对量直接比！上面 23 &lt; 31，但 10% &gt; 7% —— 不看基数比涨量，结论就反了。</p>
+    <p><strong>方法切换信号</strong>：首位相同、数值挨得近 → 立刻换增速法，别死磕第二位、第三位。</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>方法</th>
+          <th>操作</th>
+          <th>适用场景</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>除首位</strong></td>
+          <td>每个分数只除第一位，必要时除第二位</td>
+          <td>首选；选项差距大时直接秒杀</td>
+        </tr>
+        <tr>
+          <td><strong>看增速</strong></td>
+          <td>比 分子增速 vs 分母增速（涨量÷各自基数）</td>
+          <td>首位相同、分数挨得近时</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== Section 14: 口诀总结 ===== -->
+<section id="sec14">
+  <h2 class="section-title"><span class="num">14</span>口诀总结</h2>
 
   <div class="takeaways">
     <h3>资料分析基期现期 · 记忆口诀</h3>
@@ -2185,6 +2280,9 @@
       <li><strong>增长率1/n，增长量1/(n+1)</strong>——分母加一。r=12.5%(1/8) 时增长量是现期的1/9，不是1/8</li>
       <li><strong>基期敢近似，增长量要精确</strong>——r不是恰好1/n时，分数法算增长量误差是算基期的5倍</li>
       <li><strong>1/6是16.7%不是16.6%</strong>——1/6=16.667%、1/7=14.3%、1/9=11.1%、1/12=8.3%</li>
+      <li><strong>分数比大小先除首位</strong>——首位定大半，首位相同再除第二位</li>
+      <li><strong>首位相同看增速</strong>——分子增速＞分母增速，分数就变大</li>
+      <li><strong>增速要除各自基数</strong>——涨量小不代表涨得慢，23/233≈10% 能赢 31/456≈7%</li>
     </ol>
   </div>
 
@@ -2193,6 +2291,13 @@
     <p>今天学习了<strong>速算技巧：多步连除</strong>。核心三步走：<strong>同位配对 → 重组变形 → 截位约分</strong>。配对规则：<strong>现期量、增长率平行配对；(1+增长率) 交叉配对</strong>（原本是除数，除过去位置互换）。典型应用是增长量之比：[A/(1+r₁)×r₁] ÷ [B/(1+r₂)×r₂] = A/B × r₁/r₂ × (1+r₂)/(1+r₁)。另外补了五个乘除速算：<strong>×1.5加半、×1.1错位加、÷5/25/125 就是 ×2/4/8 再移小数点</strong>。</p>
     <p>上次已掌握：截位直除（分子不动只截分母、留三位误差0.5%、分母反着来）。</p>
     <p>下次将学习：<strong>其他速算技巧</strong>（尾数法、首数法、特征数字法）或<strong>比重相关概念</strong>。</p>
+  </div>
+
+  <div class="callout purple">
+    <span class="callout-title">今日学习要点（2026-09-09 · Day 4）</span>
+    <p>今天学习了<strong>分数比较两板斧</strong>：方法一<strong>除首位</strong>（每个分数只除第一位定大半，首位相同再除第二位），方法二<strong>看增长速度</strong>（分子增速 vs 分母增速，分子跑得快分数就变大；增速 = 涨量÷各自基数，不能拿涨的绝对量直接比）。并重温<strong>年均增长量 =（现期 − 基期）÷ 年份差</strong>，年份差 = 首尾年份相减（2016→2020 是 4，不是 5）。</p>
+    <p>上次已掌握：乘法估算（误差一正一负抵消）、特殊分数（增长率 1/n ↔ 增长量 1/(n+1)）、分式 vs 1 判大小。</p>
+    <p>下次将学习：<strong>速算技巧其余部分</strong>（尾数法、首数法、特征数字法）或<strong>增长率 / 增长量专项</strong>。</p>
   </div>
 </section>
 
@@ -2205,9 +2310,9 @@
 <button class="to-top" id="toTop" aria-label="回到顶部">↑</button>
 
 <footer>
-  <div class="day-counter">Day 3 · 速算技巧进阶</div>
+  <div class="day-counter">Day 4 · 分数比较</div>
   <p>行测备考 · 贵州省考/事业单位联考 · 目标210+<br>
-  2026-09-05 更新 | 持续学习中</p>
+  2026-09-09 更新 | 持续学习中</p>
 </footer>
 
 <script>
