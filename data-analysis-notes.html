@@ -1978,6 +1978,75 @@
     <p>新增<strong>判大小：分式 vs 1</strong>。核心是 (1+a)÷(1+b) = 1 + (a−b)÷(1+b)：<strong>判升降只比 a 与 b，算数值必须除 (1+b)</strong>。两个高频坑 —— ① 分母写成"1−x%"时 b 取负值；② 结果 ≠ 1+(a−b)。适用于平均数增长率、比重变化、倍数变化；隔年增长率（乘法）除外。</p>
     <p>后续待补：<strong>化除为减的适用边界</strong>（|b| 多大时才能把 ÷(1+b) 直接当 −b 省略）。</p>
   </div>
+<h3>求基期时的比值：基期比重 &amp; 基期平均数</h3>
+
+  <div class="callout info">
+    <span class="callout-title">一句话核心</span>
+    <p>上一小节是"<strong>判升降只看 a、b</strong>"；这一节是"<strong>真算基期的具体数值</strong>"——<strong>现期比值 A/B，乘一个修正因子 (1+b)÷(1+a)</strong>，得到的才是基期比值。</p>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>题型</th><th>现期比值</th><th>基期比值公式</th><th>a、b 谁是谁</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>基期比重</strong></td>
+          <td>A ÷ B<br>（部分 ÷ 整体）</td>
+          <td><strong>A/B × (1+b) ÷ (1+a)</strong></td>
+          <td>a = 部分增速，b = 整体增速</td>
+        </tr>
+        <tr>
+          <td><strong>基期平均数</strong></td>
+          <td>A ÷ B<br>（总量 ÷ 份数）</td>
+          <td><strong>A/B × (1+b) ÷ (1+a)</strong></td>
+          <td>a = 总量增速，b = 份数增速</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>公式怎么来的 —— 就是"分子分母各扒一次皮"</h3>
+  <p>基期比值 = 基期分子 ÷ 基期分母。两个量各自都在做"现期 ÷ (1+r)"：</p>
+  <p>基期分子 = A ÷ (1+a)，　基期分母 = B ÷ (1+b)</p>
+  <p>所以：基期比值 = [A÷(1+a)] ÷ [B÷(1+b)] = <strong>A/B × (1+b) ÷ (1+a)</strong>，跟第 3 节的"求基期"是同一套逻辑，只是分子分母各来一次。</p>
+
+  <div class="callout success">
+    <span class="callout-title">记忆口诀：谁的增速，谁翻对面</span>
+    <p>现期比值 A/B 里，分子 A 的增速是 a、分母 B 的增速是 b。改写基期时 <strong>a 落到分母 (1+a)，b 翻到分子 (1+b)</strong>——两个字母交叉对调。口诀：<strong>「a 跟着 A 沉到底，b 跟着 B 升上头」</strong>。</p>
+  </div>
+
+  <div class="example-card">
+    <h4>例题 · 基期比重</h4>
+    <p>2023 年某地区生产总值 2400 亿元（整体 B），其中第三产业增加值 1200 亿元（部分 A）；整体增速 b = 8%，第三产业增速 a = 20%。问 2022 年第三产业占生产总值的比重。</p>
+    <ul>
+      <li>现期比重 = 1200 ÷ 2400 = <strong>50%</strong></li>
+      <li>基期比重 = 50% × (1+8%) ÷ (1+20%) = 50% × 1.08 ÷ 1.2 = <strong>45%</strong></li>
+      <li>验算：基期整体 = 2400÷1.08 ≈ 2222，基期部分 = 1200÷1.2 = 1000，1000÷2222 ≈ 45% ✓</li>
+    </ul>
+  </div>
+
+  <div class="example-card">
+    <h4>例题 · 基期平均数</h4>
+    <p>2023 年某厂总收入 1155 万元（总量 A，+10%），职工 105 人（份数 B，+5%）。问 2022 年人均收入。</p>
+    <ul>
+      <li>现期人均 = 1155 ÷ 105 = <strong>11 万元/人</strong></li>
+      <li>基期人均 = 11 × (1+5%) ÷ (1+10%) = 11 × 1.05 ÷ 1.1 = <strong>10.5 万元/人</strong></li>
+      <li>验算：基期总量 = 1155÷1.1 = 1050，基期人数 = 105÷1.05 = 100，1050÷100 = 10.5 ✓</li>
+    </ul>
+  </div>
+
+  <div class="callout danger">
+    <span class="callout-title">考场两大陷阱</span>
+    <p>① <strong>a、b 写反</strong>：最常错。牢记"分子增速 a 放分母、分母增速 b 放分子"，交叉对调，别按相同位置照抄。<br>
+    ② <strong>和"判升降"混了</strong>：判升降只看 a 与 b 谁大（不求值）；求基期比值才要乘 A/B。题干问"基期比重 / 基期平均数是多少"就是求值，问"比上年升/降"就是判方向。</p>
+  </div>
+
+  <div class="callout purple">
+    <span class="callout-title">本次学习要点（2026-10-11）</span>
+    <p>新增<strong>基期比重 &amp; 基期平均数</strong>。核心：基期比值 = 现期比值 A/B × (1+b)÷(1+a)，其中 a 是分子增速、b 是分母增速。本质是"分子分母各扒一次皮"（第 1、3 节的求基期逻辑）。口诀「a 跟着 A 沉到底，b 跟着 B 升上头」。易错：a、b 交叉别写反；判升降≠求基期值。</p>
+  </div>
 </section>
 
 <!-- ===== Section 12: 特殊分数 ===== -->
