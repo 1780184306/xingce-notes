@@ -573,6 +573,122 @@
     .layout { grid-template-columns: 1fr; padding: 0; }
   }
 </style>
+<style id="note-search-style">
+  /* ===== 站内搜索 ===== */
+  .note-search {
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    background: #ffffff;
+    padding: 0.85rem 1.2rem 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 2px 10px rgba(15, 30, 60, 0.05);
+  }
+  .note-search-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .note-search-inner .ns-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 17px;
+    height: 17px;
+    color: #94a3b8;
+    pointer-events: none;
+  }
+  .note-search input {
+    width: 100%;
+    padding: 0.68rem 5.2rem 0.68rem 2.7rem;
+    font-size: 0.98rem;
+    font-family: inherit;
+    border: 1px solid #d7e0ec;
+    border-radius: 999px;
+    background: #f8fafc;
+    color: #1a2b3c;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+  }
+  .note-search input:focus {
+    border-color: #2563eb;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  }
+  .note-search .ns-count {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.78rem;
+    color: #64748b;
+    pointer-events: none;
+  }
+  .note-search-results {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 6px);
+    max-height: 420px;
+    overflow-y: auto;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(15, 30, 60, 0.16);
+    z-index: 95;
+    text-align: left;
+  }
+  .note-search-results[hidden] { display: none; }
+  .ns-item {
+    display: block;
+    width: 100%;
+    padding: 0.65rem 1rem;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    border-bottom: 1px solid #eef2f7;
+    font-family: inherit;
+  }
+  .ns-item:last-child { border-bottom: none; }
+  .ns-item:hover, .ns-item:focus { background: #eff6ff; outline: none; }
+  .ns-item .ns-label {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #1a2b3c;
+    display: block;
+    margin-bottom: 0.1rem;
+  }
+  .ns-item .ns-snippet {
+    font-size: 0.83rem;
+    color: #5a6c7d;
+    line-height: 1.5;
+    display: block;
+  }
+  .ns-empty {
+    padding: 1rem;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.9rem;
+  }
+  mark.srch-hl {
+    background: #fde047;
+    color: #1a2b3c;
+    border-radius: 2px;
+    padding: 0 1px;
+  }
+  .flash-section {
+    animation: nsFlash 1.6s ease;
+  }
+  @keyframes nsFlash {
+    0% { box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.45); }
+    100% { box-shadow: none; }
+  }
+  @media (min-width: 861px) {
+    .note-search + .layout .sidebar { top: 4.5rem; max-height: calc(100vh - 5.5rem); }
+  }
+</style>
 </head>
 <body>
 
@@ -586,6 +702,16 @@
     <span>Day 4 · 分数比较</span>
   </div>
 </header>
+
+<!-- ===== 站内搜索 ===== -->
+<div class="note-search">
+  <div class="note-search-inner">
+    <svg class="ns-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
+    <input id="noteSearchInput" type="search" placeholder="搜索本页笔记：基期 / 百化分 / 中心理解 / 错误原因…" autocomplete="off" aria-label="搜索笔记">
+    <span class="ns-count" id="noteSearchCount"></span>
+    <div class="note-search-results" id="noteSearchResults" hidden></div>
+  </div>
+</div>
 
 <div class="layout">
 
@@ -2520,5 +2646,175 @@
 })();
 </script>
 
+<script id="note-search-script">
+(function () {
+  var input = document.getElementById('noteSearchInput');
+  var box = document.getElementById('noteSearchResults');
+  var count = document.getElementById('noteSearchCount');
+  if (!input || !box) return;
+
+  // ---- 建立搜索索引：按 section + h3/h4 子标题切块 ----
+  var chunks = [];
+  var uid = 0;
+  document.querySelectorAll('section[id]').forEach(function (sec) {
+    var secH = sec.querySelector('h2');
+    var secTitle = secH ? secH.textContent.replace(/^\s*[\d.、]+\s*/, '').trim() : '';
+    var curLabel = secTitle || sec.id;
+    var curText = '';
+    var target = sec;
+    var targetId = sec.id;
+    function flush() {
+      var txt = curText.replace(/\s+/g, ' ');
+      if (txt.trim().length > 0) {
+        chunks.push({ label: curLabel, text: txt, targetId: targetId, sec: sec });
+      }
+      curText = '';
+    }
+    function walk(node) {
+      if (node.nodeType === 3) { curText += node.textContent; return; }
+      if (node.nodeType !== 1) return;
+      var tag = node.tagName;
+      if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'NOSCRIPT') return;
+      if (tag === 'H2') return;
+      if (tag === 'H3' || tag === 'H4') {
+        flush();
+        curLabel = (secTitle ? secTitle + ' · ' : '') + node.textContent.replace(/\s+/g, ' ').trim();
+        target = node;
+        if (!node.id) { node.id = 'ns_' + (++uid); }
+        targetId = node.id;
+        curText += ' ' + node.textContent + ' ';
+        return;
+      }
+      for (var i = 0; i < node.childNodes.length; i++) walk(node.childNodes[i]);
+    }
+    Array.prototype.forEach.call(sec.childNodes, walk);
+    flush();
+  });
+
+  // ---- 高亮相关 ----
+  var highlighted = [];
+  function clearHighlights() {
+    highlighted.forEach(function (m) {
+      var p = m.parentNode;
+      if (p) p.replaceChild(document.createTextNode(m.textContent), m);
+    });
+    highlighted = [];
+  }
+  function highlightIn(el, q) {
+    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    var ql = q.toLowerCase();
+    nodes.forEach(function (tn) {
+      var parent = tn.parentNode;
+      if (!parent) return;
+      if (parent.closest && (parent.closest('.note-search') || parent.closest('script') || parent.closest('style'))) return;
+      var text = tn.textContent;
+      var lower = text.toLowerCase();
+      var idx = lower.indexOf(ql);
+      if (idx === -1) return;
+      var frag = document.createDocumentFragment();
+      var pos = 0;
+      while (idx !== -1) {
+        if (idx > pos) frag.appendChild(document.createTextNode(text.slice(pos, idx)));
+        var mk = document.createElement('mark');
+        mk.className = 'srch-hl';
+        mk.textContent = text.slice(idx, idx + q.length);
+        highlighted.push(mk);
+        frag.appendChild(mk);
+        pos = idx + q.length;
+        idx = lower.indexOf(ql, pos);
+      }
+      if (pos < text.length) frag.appendChild(document.createTextNode(text.slice(pos)));
+      parent.replaceChild(frag, tn);
+    });
+  }
+
+  function esc(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+  function snippet(text, q) {
+    var i = text.toLowerCase().indexOf(q.toLowerCase());
+    if (i === -1) return esc(text.slice(0, 60)) + (text.length > 60 ? '…' : '');
+    var start = Math.max(0, i - 22);
+    var end = Math.min(text.length, i + q.length + 40);
+    var pre = (start > 0 ? '…' : '') + text.slice(start, i);
+    var m = text.slice(i, i + q.length);
+    var post = text.slice(i + q.length, end) + (end < text.length ? '…' : '');
+    return esc(pre) + '<mark class="srch-hl">' + esc(m) + '</mark>' + esc(post);
+  }
+
+  // ---- 搜索 ----
+  var debounceTimer = null;
+  function doSearch() {
+    clearHighlights();
+    var q = input.value.trim();
+    if (!q) { box.hidden = true; count.textContent = ''; return; }
+    var ql = q.toLowerCase();
+    var hits = [];
+    chunks.forEach(function (c) {
+      var lower = c.text.toLowerCase();
+      var n = 0, idx = lower.indexOf(ql);
+      while (idx !== -1) { n++; idx = lower.indexOf(ql, idx + ql.length); }
+      if (n > 0) {
+        hits.push({ c: c, n: n, labelHit: c.label.toLowerCase().indexOf(ql) !== -1 ? 1 : 0 });
+      }
+    });
+    hits.sort(function (a, b) {
+      if (a.labelHit !== b.labelHit) return b.labelHit - a.labelHit;
+      return b.n - a.n;
+    });
+    count.textContent = hits.length ? '共 ' + hits.length + ' 处' : '';
+    box.innerHTML = '';
+    if (!hits.length) {
+      box.innerHTML = '<div class="ns-empty">没有找到「' + esc(q) + '」相关内容</div>';
+    } else {
+      hits.slice(0, 30).forEach(function (h) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'ns-item';
+        btn.innerHTML = '<span class="ns-label">' + esc(h.c.label) + '</span>' +
+                        '<span class="ns-snippet">' + snippet(h.c.text, q) + '</span>';
+        btn.addEventListener('click', function () { goTo(h); });
+        box.appendChild(btn);
+      });
+    }
+    box.hidden = false;
+  }
+
+  function goTo(h) {
+    clearHighlights();
+    box.hidden = true;
+    var t = document.getElementById(h.c.targetId);
+    if (t) {
+      highlightIn(h.c.sec, input.value.trim());
+      t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      var sec = h.c.sec;
+      sec.classList.remove('flash-section');
+      void sec.offsetWidth;
+      sec.classList.add('flash-section');
+    }
+  }
+
+  input.addEventListener('input', function () {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(doSearch, 160);
+  });
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      var first = box.querySelector('.ns-item');
+      if (first) first.click();
+    } else if (e.key === 'Escape') {
+      box.hidden = true;
+      count.textContent = '';
+      input.blur();
+    }
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.note-search')) box.hidden = true;
+  });
+})();
+</script>
 </body>
 </html>
