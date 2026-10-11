@@ -733,6 +733,8 @@
     <li><a href="#sec12">特殊分数</a></li>
     <li><a href="#sec13">分数比较 —— 除首位 + 看增速</a></li>
     <li><a href="#sec14">口诀总结</a></li>
+    <li><a href="#sec15">间隔增长率（隔年）</a></li>
+    <li><a href="#sec16">混合增长率（整体）</a></li>
   </ol>
   <div class="progress-wrap">
     <div class="progress-label">
@@ -2512,6 +2514,8 @@
       <li><strong>分数比大小先除首位</strong>——首位定大半，首位相同再除第二位</li>
       <li><strong>首位相同看增速</strong>——分子增速＞分母增速，分数就变大</li>
       <li><strong>增速要除各自基数</strong>——涨量小不代表涨得慢，23/233≈10% 能赢 31/456≈7%</li>
+      <li><strong>隔年增长率先加再乘</strong>——R = r₁ + r₂ + r₁·r₂，两个隔年增速先相加再相乘</li>
+      <li><strong>混合增长率居中偏大者</strong>——整体增速介于两部分之间，且偏向基期量大的一方</li>
     </ol>
   </div>
 
@@ -2527,6 +2531,136 @@
     <p>今天学习了<strong>分数比较两板斧</strong>：方法一<strong>除首位</strong>（每个分数只除第一位定大半，首位相同再除第二位），方法二<strong>看增长速度</strong>（分子增速 vs 分母增速，分子跑得快分数就变大；增速 = 涨量÷各自基数，不能拿涨的绝对量直接比）。并重温年均增长「量·率」两公式：<strong>年均增长量 =（现期 − 基期）÷ 年份差</strong>（算术平均，直接除）；<strong>年均增长率 = <sup>n</sup>√（现期 ÷ 基期）− 1</strong>（几何平均，开 n 次方）。两个坑：年份差 = 首尾年份相减（2016→2020 是 4，不是 5）；年均增长率 <strong>≠ 总增长率 ÷ n</strong>（复利效应会高估），考场算不开方就用选项代入验证，算 (1+r)<sup>n</sup> 对比「现期 ÷ 基期」。</p>
     <p>上次已掌握：乘法估算（误差一正一负抵消）、特殊分数（增长率 1/n ↔ 增长量 1/(n+1)）、分式 vs 1 判大小。</p>
     <p>下次将学习：<strong>速算技巧其余部分</strong>（尾数法、首数法、特征数字法）或<strong>增长率 / 增长量专项</strong>。</p>
+  </div>
+</section>
+
+<!-- ===== Section 15: 间隔增长率 ===== -->
+<section id="sec15">
+  <h2 class="section-title"><span class="num">15</span>间隔增长率（隔年增长率）</h2>
+
+  <p>前面学的增长率都是<strong>相邻两年</strong>比。但题目常问"某年比<strong>隔一年之前</strong>（前年）增长了多少"——这就叫<strong>间隔增长率</strong>，也叫"隔年增长率""两年复合增速"。</p>
+
+  <div class="callout info">
+    <span class="callout-title">场景识别</span>
+    <p>给出<strong>连续两年各自的增长率</strong> r₁、r₂，求<strong>这两年合计</strong>的增长率 R。</p>
+    <p>例：2023年比2022年增长 r₁，2022年比2021年增长 r₂，问2023年比2021年增长多少。</p>
+  </div>
+
+  <h3>核心公式</h3>
+
+  <div class="formula-box">
+    <span class="formula-label">间隔增长率</span>
+    <div class="formula">R = <span class="highlight">r₁ + r₂ + r₁·r₂</span></div>
+  </div>
+
+  <p>口诀：<strong>先加，再乘</strong>。先把两个增速加起来，再加上它们的乘积。</p>
+
+  <div class="callout success">
+    <span class="callout-title">为什么是"加 + 乘"？</span>
+    <p>设基期为 1，第二年 = 1×(1+r₂)，第三年 = 1×(1+r₂)×(1+r₁)。</p>
+    <p>展开 (1+r₁)(1+r₂) = 1 + r₁ + r₂ + r₁·r₂，所以总增长率 R = r₁ + r₂ + r₁·r₂。</p>
+    <p>本质是两次<strong>连乘</strong>里的交叉项，不能只相加。</p>
+  </div>
+
+  <div class="example-card">
+    <h4>举例：间隔增长率</h4>
+    <p>2023年增速 20%，2022年增速 10%，求2023年比2021年的增长率。</p>
+    <div class="callout info">
+      <span class="callout-title">解题思路</span>
+      <p>r₁ = 20%，r₂ = 10%</p>
+      <p>R = 20% + 10% + 20%×10% = 30% + 2% = <strong>32%</strong></p>
+    </div>
+    <p>注意：不是 30%，多了 2% 的乘积项，别漏！</p>
+  </div>
+
+  <h3>两个逆用结论</h3>
+
+  <div class="formula-box">
+    <span class="formula-label">逆用一：已知总增速和其中一年，反推另一年</span>
+    <div class="formula">r₁ = <span class="highlight">(R − r₂) ÷ (1 + r₂)</span></div>
+  </div>
+
+  <div class="formula-box">
+    <span class="formula-label">逆用二：求间隔基期量</span>
+    <div class="formula">间隔基期 = <span class="highlight">现期 ÷ (1 + R)</span></div>
+  </div>
+
+  <p>即：先算出两年的总增速 R，再按普通的"基期 = 现期 ÷ (1+增长率)"回落两年。</p>
+
+  <div class="callout danger">
+    <span class="callout-title">易错提醒</span>
+    <p>间隔增长率是<strong>乘法结构</strong>，不能套"判升降"那套除法规则（ag = (a−b)÷(1+b)）。</p>
+    <p>乘法结构用 R = r₁ + r₂ + r₁·r₂；除法结构（平均数增长率、比重变化）才用 a/b 判方向。</p>
+  </div>
+</section>
+
+<!-- ===== Section 16: 混合增长率 ===== -->
+<section id="sec16">
+  <h2 class="section-title"><span class="num">16</span>混合增长率（整体增长率）</h2>
+
+  <p>一个<strong>整体</strong>由几个<strong>部分</strong>组成，已知各部分自己的增长率，问<strong>整体增长率</strong>是多少。资料分析里最常见的是"进口 + 出口 = 进出口""城镇 + 农村 = 全国""1-5月 + 6月 = 上半年"这类。</p>
+
+  <h3>两条核心规律</h3>
+
+  <div class="callout success">
+    <span class="callout-title">规律一：居中</span>
+    <p>整体增长率<strong>介于各部分增长率之间</strong>，不可能比最快的还快，也不可能比最慢的还慢。</p>
+    <p>例：出口增长 15%，进口增长 5%，则进出口总额增速一定在 <strong>5% ~ 15%</strong> 之间。</p>
+  </div>
+
+  <div class="callout success">
+    <span class="callout-title">规律二：偏向基期量大的一方</span>
+    <p>整体增速<strong>靠近"基期量更大"的那部分</strong>（比重越大，权数越大，越把它往自己那边拉）。</p>
+    <p>例：出口基期 800 亿（增速15%），进口基期 200 亿（增速5%），整体增速更靠近 15%，约为 13% 左右。</p>
+  </div>
+
+  <div class="formula-box">
+    <span class="formula-label">本质：加权平均（十字交叉）</span>
+    <div class="formula">整体增速 ≈ <span class="highlight">Σ(各部分增速 × 各部分基期权重)</span></div>
+  </div>
+
+  <div class="example-card">
+    <h4>举例：混合增长率</h4>
+    <p>上半年进口增长 20%，出口增长 10%，且进口额与出口额大致相当，求进出口总额增速。</p>
+    <div class="callout info">
+      <span class="callout-title">解题思路</span>
+      <p>整体增速介于 10% ~ 20% 之间。</p>
+      <p>进口 = 出口（权重相当），整体增速 ≈ (20% + 10%) ÷ 2 = <strong>15%</strong>。</p>
+    </div>
+  </div>
+
+  <div class="callout warn">
+    <span class="callout-title">做题技巧</span>
+    <p>1. 先用<strong>居中</strong>排除一部分选项。</p>
+    <p>2. 再用<strong>偏大（基期大的一方）</strong>在剩余选项里定位。</p>
+    <p>3. 多数题目用这两步即可锁定答案，不必精确加权计算。</p>
+  </div>
+
+  <div class="callout danger">
+    <span class="callout-title">易错提醒</span>
+    <p>判断"偏向哪边"看的是<strong>基期量</strong>（或现期大致的比重），不是看增长速度谁高。</p>
+    <p>增速最快的那部分，如果基数很小，对整体的拉动也有限。</p>
+  </div>
+
+  <h3>增长率「四兄弟」总览</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>类型</th>
+          <th>求什么</th>
+          <th>核心公式</th>
+          <th>结构</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>普通增长率</td><td>相邻两年</td><td>(现期 − 基期) ÷ 基期</td><td>减法/除法</td></tr>
+        <tr><td>年均增长率</td><td>多年平均每年</td><td><sup>n</sup>√(现期÷基期) − 1</td><td>几何平均（开方）</td></tr>
+        <tr><td>间隔增长率</td><td>隔一年（两年合计）</td><td>r₁ + r₂ + r₁·r₂</td><td>乘法</td></tr>
+        <tr><td>混合增长率</td><td>多部分合成的整体</td><td>居中、偏向基期大的一方</td><td>加权平均</td></tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
