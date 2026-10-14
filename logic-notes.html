@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>行测判断推理·学习笔记（持续更新）</title>
+<style>
+  :root {
+    --bg: #f5f8fc;
+    --surface: #ffffff;
+    --surface-2: #eef3fa;
+    --ink: #1a2b3c;
+    --muted: #5a6c7d;
+    --rule: #dde4ec;
+    --accent: #2563eb;
+    --accent-2: #0ea5e9;
+    --accent-soft: #e0ecff;
+    --warn: #d97706;
+    --warn-soft: #fef3e2;
+    --danger: #dc2626;
+    --danger-soft: #fde8e8;
+    --success: #059669;
+    --success-soft: #e3f5ec;
+    --purple: #7c3aed;
+    --purple-soft: #f0e7ff;
+    --shadow: 0 1px 3px rgba(15, 30, 60, 0.06), 0 1px 2px rgba(15, 30, 60, 0.04);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Microsoft YaHei", "微软雅黑", "Source Han Sans SC", "PingFang SC", "Hiragino Sans GB", "Helvetica Neue", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 55%, #0ea5e9 100%);
+    color: #fff;
+    padding: 3.5rem 1.5rem 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 30%, rgba(255,255,255,0.12) 0, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(255,255,255,0.08) 0, transparent 35%);
+    pointer-events: none;
+  }
+  .hero h1 {
+    margin: 0 0 0.6rem;
+    font-size: 2.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    position: relative; z-index: 1;
+  }
+  .hero .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.92;
+    font-weight: 400;
+    position: relative; z-index: 1;
+  }
+  .hero .meta {
+    margin-top: 1.4rem;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    position: relative; z-index: 1;
+  }
+  .hero .meta span {
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+  }
+
+  /* ===== Layout: 侧边栏 + 主内容 ===== */
+  .layout {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    display: grid;
+    grid-template-columns: 268px minmax(0, 1fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
+  /* Sidebar TOC */
+  .sidebar {
+    position: sticky;
+    top: 1.5rem;
+    max-height: calc(100vh - 3rem);
+    overflow-y: auto;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1.2rem 1rem;
+    box-shadow: var(--shadow);
+    scrollbar-width: thin;
+  }
+  .sidebar::-webkit-scrollbar { width: 6px; }
+  .sidebar::-webkit-scrollbar-thumb {
+    background: var(--rule);
+    border-radius: 3px;
+  }
+  .sidebar h2 {
+    margin: 0 0 0.9rem;
+    font-size: 0.95rem;
+    color: var(--accent);
+    border-left: 4px solid var(--accent);
+    padding-left: 0.6rem;
+    letter-spacing: 0.3px;
+  }
+  .sidebar ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: toc;
+  }
+  .sidebar li {
+    counter-increment: toc;
+    margin-bottom: 0.15rem;
+  }
+  .sidebar a {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.875rem;
+    line-height: 1.45;
+    padding: 0.5rem 0.6rem;
+    border-radius: 8px;
+    border-left: 3px solid transparent;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .sidebar a::before {
+    content: counter(toc);
+    flex: 0 0 20px;
+    height: 20px;
+    background: var(--surface-2);
+    color: var(--muted);
+    border-radius: 5px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .sidebar a:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+  .sidebar a.active {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 700;
+    border-left-color: var(--accent);
+  }
+  .sidebar a.active::before {
+    background: var(--accent);
+    color: #fff;
+  }
+
+  /* 阅读进度条 */
+  .progress-wrap {
+    margin-top: 1rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--rule);
+  }
+  .progress-label {
+    font-size: 0.75rem;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+  }
+  .progress-track {
+    height: 5px;
+    background: var(--surface-2);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .progress-bar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    border-radius: 999px;
+    transition: width 0.15s ease-out;
+  }
+
+  /* 移动端目录按钮 */
+  .toc-toggle {
+    display: none;
+    position: fixed;
+    bottom: 1.3rem;
+    right: 1.3rem;
+    z-index: 60;
+    width: 52px;
+    height: 52px;
+    border: none;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-size: 1.35rem;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+  }
+  .toc-toggle:active { transform: scale(0.94); }
+
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 30, 60, 0.45);
+    z-index: 45;
+  }
+  .sidebar-overlay.show { display: block; }
+
+  /* 回到顶部 */
+  .to-top {
+    position: fixed;
+    bottom: 1.3rem;
+    right: 1.3rem;
+    z-index: 55;
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--rule);
+    border-radius: 50%;
+    background: var(--surface);
+    color: var(--accent);
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+  .to-top.show { opacity: 1; pointer-events: auto; }
+
+  /* Sections */
+  section {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 1.8rem 2rem;
+    margin-bottom: 1.8rem;
+    box-shadow: var(--shadow);
+  }
+
+  h2.section-title {
+    font-size: 1.45rem;
+    color: var(--ink);
+    margin: 0 0 1.2rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  h2.section-title .num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px; height: 32px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  h3 {
+    font-size: 1.15rem;
+    color: var(--accent);
+    margin: 1.6rem 0 0.8rem;
+    font-weight: 600;
+  }
+  h3:first-of-type { margin-top: 0; }
+  h4 { font-size: 1rem; color: var(--ink); margin: 1.2rem 0 0.5rem; font-weight: 600; }
+  p { margin: 0.6rem 0; }
+  strong { color: var(--ink); font-weight: 600; }
+  mark.key { background: none; color: var(--accent); font-weight: 600; }
+
+  ul, ol { padding-left: 1.4rem; margin: 0.6rem 0; }
+  li { margin-bottom: 0.3rem; }
+
+  /* Tables */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1rem 0 1.2rem;
+    border-radius: 8px;
+    border: 1px solid var(--rule);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    font-size: 0.95rem;
+    min-width: 480px;
+  }
+  thead {
+    background: var(--accent);
+    color: #fff;
+    position: sticky;
+    top: 0;
+  }
+  th {
+    padding: 0.7rem 0.9rem;
+    text-align: left;
+    font-weight: 600;
+    border-right: 1px solid rgba(255,255,255,0.18);
+  }
+  th:last-child { border-right: none; }
+  td {
+    padding: 0.7rem 0.9rem;
+    border-top: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  td:last-child { border-right: none; }
+  tbody tr:nth-child(even) { background: var(--surface-2); }
+  tbody tr:hover { background: var(--accent-soft); }
+
+  /* Callouts */
+  .callout {
+    border-left: 4px solid var(--accent);
+    background: var(--accent-soft);
+    padding: 0.9rem 1.1rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+  }
+  .callout.warn { border-left-color: var(--warn); background: var(--warn-soft); }
+  .callout.danger { border-left-color: var(--danger); background: var(--danger-soft); }
+  .callout.success { border-left-color: var(--success); background: var(--success-soft); }
+  .callout.purple { border-left-color: var(--purple); background: var(--purple-soft); }
+  .callout-title { font-weight: 700; margin-bottom: 0.3rem; display: block; }
+  .callout.warn .callout-title { color: var(--warn); }
+  .callout.danger .callout-title { color: var(--danger); }
+  .callout.success .callout-title { color: var(--success); }
+  .callout.purple .callout-title { color: var(--purple); }
+  .callout.info .callout-title { color: var(--accent); }
+
+  /* Formula box */
+  .formula-box {
+    background: linear-gradient(135deg, #14304f 0%, #17307a 100%);
+    color: #f8fafc;
+    padding: 1.35rem 1.5rem;
+    border-radius: 10px;
+    margin: 1rem 0;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(20,48,79,0.3);
+  }
+  .formula-box .formula-label {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-bottom: 0.4rem;
+    display: block;
+    font-weight: 400;
+  }
+  .formula-box .formula {
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 1.25rem;
+    letter-spacing: 0.02em;
+  }
+  .formula-box .formula .highlight {
+    color: #ffd479;
+  }
+  /* 深色底容器内的 strong 必须继承亮色，
+     否则被全局 strong{color:var(--ink)} 覆盖成深墨蓝，
+     深蓝底上几乎不可读（2026-09-08 修复） */
+  .formula-box strong,
+  .formula-box b,
+  .mindmap-center-node strong,
+  .mindmap-branch-header strong,
+  .day-counter strong {
+    color: inherit;
+  }
+  /* 公式框排版优化：加大行距与字号，公式用等宽字体 */
+  .formula-box p {
+    margin: 0.55rem 0;
+    line-height: 1.85;
+    font-variant-numeric: tabular-nums;
+    font-family: "Consolas", "SF Mono", "Menlo", "Courier New",
+                 "Noto Sans CJK SC", "Microsoft YaHei", monospace;
+    letter-spacing: 0.01em;
+  }
+  .formula-box p:first-child { margin-top: 0; }
+  .formula-box p:last-child { margin-bottom: 0; }
+
+  /* Takeaways */
+  .takeaways {
+    background: linear-gradient(135deg, var(--accent-soft) 0%, #f0f9ff 100%);
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    padding: 1.4rem 1.6rem;
+    margin: 1rem 0;
+  }
+  .takeaways ol { padding-left: 1.4rem; }
+  .takeaways li { margin-bottom: 0.5rem; }
+
+  /* Example card */
+  .example-card {
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 1.1rem 1.3rem;
+    margin: 1rem 0;
+    background: var(--surface-2);
+    border-left: 4px solid var(--accent-2);
+  }
+  .example-card h4 { margin-top: 0; color: var(--accent); font-size: 1.05rem; }
+
+  /* Mind map */
+  .mindmap {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    margin: 1.5rem 0;
+    border: 1px solid #e2e8f0;
+  }
+  .mindmap-title {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #475569;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+  }
+  .mindmap-center {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  .mindmap-center-node {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+    color: #fff;
+    padding: 0.7rem 2rem;
+    border-radius: 12px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+  }
+  .mindmap-branches {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .mindmap-branch {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    background: #fff;
+  }
+  .mindmap-branch-header {
+    padding: 0.6rem 1rem;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #fff;
+  }
+  .mindmap-branch-body {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+    color: var(--ink);
+  }
+  .mindmap-branch-body ul { padding-left: 1.1rem; margin: 0; }
+  .mindmap-branch-body li { margin-bottom: 0.3rem; line-height: 1.6; }
+  .bh-blue { background: linear-gradient(135deg, #2563eb, #0ea5e9); }
+  .bh-green { background: linear-gradient(135deg, #059669, #10b981); }
+  .bh-orange { background: linear-gradient(135deg, #d97706, #f59e0b); }
+  .bh-purple { background: linear-gradient(135deg, #7c3aed, #a855f7); }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    padding: 2rem 1rem 3rem;
+    border-top: 1px solid var(--rule);
+    margin-top: 2rem;
+  }
+  footer .day-counter {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.3rem 1rem;
+    border-radius: 999px;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+
+  section[id], h2[id] { scroll-margin-top: 1.5rem; }
+
+  /* 中等屏幕：缩窄侧边栏 */
+  @media (max-width: 1080px) {
+    .layout {
+      grid-template-columns: 232px minmax(0, 1fr);
+      gap: 1.4rem;
+      padding: 1.5rem 1rem;
+    }
+    .sidebar a { font-size: 0.83rem; padding: 0.45rem 0.5rem; }
+  }
+
+  /* 移动端：侧边栏变抽屉 */
+  @media (max-width: 860px) {
+    .layout {
+      grid-template-columns: minmax(0, 1fr);
+      padding: 1.2rem 0.8rem;
+      gap: 0;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 82%;
+      max-width: 320px;
+      max-height: none;
+      z-index: 50;
+      border-radius: 0 14px 14px 0;
+      padding: 1.4rem 1.1rem;
+      transform: translateX(-105%);
+      transition: transform 0.28s ease;
+      box-shadow: 4px 0 24px rgba(15, 30, 60, 0.18);
+    }
+    .sidebar.open { transform: translateX(0); }
+    .sidebar h2 { font-size: 1.05rem; margin-bottom: 1rem; }
+    .sidebar a { font-size: 0.9rem; padding: 0.6rem 0.6rem; }
+    .toc-toggle { display: flex; align-items: center; justify-content: center; }
+    .to-top {
+      bottom: 5.2rem;
+      right: 1.45rem;
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+    section[id], h2[id] { scroll-margin-top: 0.8rem; }
+  }
+
+  @media (max-width: 768px) {
+    .hero { padding: 2.5rem 1rem 2rem; }
+    .hero h1 { font-size: 1.6rem; }
+    section { padding: 1.3rem 1rem; }
+    h2.section-title { font-size: 1.2rem; }
+    h2.section-title .num { width: 26px; height: 26px; font-size: 0.85rem; }
+    table { font-size: 0.88rem; }
+    th, td { padding: 0.55rem 0.6rem; }
+    .mindmap-branches { grid-template-columns: 1fr; }
+    .formula-box .formula { font-size: 1rem; }
+  }
+
+  @media print {
+    body { background: #fff; }
+    .hero { background: #1e3a8a !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    section { box-shadow: none; page-break-inside: avoid; }
+    .sidebar, .toc-toggle, .to-top, .sidebar-overlay { display: none !important; }
+    .layout { grid-template-columns: 1fr; padding: 0; }
+  }
+</style>
+<style id="note-search-style">
+  /* ===== 站内搜索 ===== */
+  .note-search {
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    background: #ffffff;
+    padding: 0.85rem 1.2rem 1rem;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 2px 10px rgba(15, 30, 60, 0.05);
+  }
+  .note-search-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .note-search-inner .ns-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 17px;
+    height: 17px;
+    color: #94a3b8;
+    pointer-events: none;
+  }
+  .note-search input {
+    width: 100%;
+    padding: 0.68rem 5.2rem 0.68rem 2.7rem;
+    font-size: 0.98rem;
+    font-family: inherit;
+    border: 1px solid #d7e0ec;
+    border-radius: 999px;
+    background: #f8fafc;
+    color: #1a2b3c;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+  }
+  .note-search input:focus {
+    border-color: #2563eb;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  }
+  .note-search .ns-count {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.78rem;
+    color: #64748b;
+    pointer-events: none;
+  }
+  .note-search-results {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 6px);
+    max-height: 420px;
+    overflow-y: auto;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(15, 30, 60, 0.16);
+    z-index: 95;
+    text-align: left;
+  }
+  .note-search-results[hidden] { display: none; }
+  .ns-item {
+    display: block;
+    width: 100%;
+    padding: 0.65rem 1rem;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    border-bottom: 1px solid #eef2f7;
+    font-family: inherit;
+  }
+  .ns-item:last-child { border-bottom: none; }
+  .ns-item:hover, .ns-item:focus { background: #eff6ff; outline: none; }
+  .ns-item .ns-label {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #1a2b3c;
+    display: block;
+    margin-bottom: 0.1rem;
+  }
+  .ns-item .ns-snippet {
+    font-size: 0.83rem;
+    color: #5a6c7d;
+    line-height: 1.5;
+    display: block;
+  }
+  .ns-empty {
+    padding: 1rem;
+    text-align: center;
+    color: #94a3b8;
+    font-size: 0.9rem;
+  }
+  mark.srch-hl {
+    background: #fde047;
+    color: #1a2b3c;
+    border-radius: 2px;
+    padding: 0 1px;
+  }
+  .flash-section {
+    animation: nsFlash 1.6s ease;
+  }
+  @keyframes nsFlash {
+    0% { box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.45); }
+    100% { box-shadow: none; }
+  }
+  @media (min-width: 861px) {
+    .note-search + .layout .sidebar { top: 4.5rem; max-height: calc(100vh - 5.5rem); }
+  }
+</style>
+</head><body>
+
+<!-- ===== Hero ===== -->
+<header class="hero">
+  <h1>判断推理 · 学习笔记</h1>
+  <p class="subtitle">图形推理 | 定义判断 | 类比推理 | 逻辑判断</p>
+  <div class="meta">
+    <span>贵州省考 · 事业单位联考</span>
+    <span>2026-10-13</span>
+    <span>持续更新中</span>
+  </div>
+</header>
+
+<!-- ===== 站内搜索 ===== -->
+<div class="note-search">
+  <div class="note-search-inner">
+    <svg class="ns-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.5" y2="16.5"></line></svg>
+    <input id="noteSearchInput" type="search" placeholder="搜索本页笔记：图形推理 / 平移 / 旋转 / 翻转 / 手性…" autocomplete="off" aria-label="搜索笔记">
+    <span class="ns-count" id="noteSearchCount"></span>
+    <div class="note-search-results" id="noteSearchResults" hidden></div>
+  </div>
+</div>
+
+<div class="layout">
+<!-- ===== 左侧目录 ===== -->
+<aside class="sidebar" id="sidebar">
+  <h2>本页目录</h2>
+  <ol>
+    <li><a href="#sec1">判断推理模块总览</a></li>
+    <li><a href="#sec2">图形推理 · 题型特征</a></li>
+    <li><a href="#sec3">位置类规律：平移 / 旋转 / 翻转</a></li>
+    <li><a href="#sec4">解题要点与口诀</a></li>
+  </ol>
+  <div class="progress-wrap">
+    <div class="progress-label">
+      <span>阅读进度</span>
+      <span id="progressPct">0%</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+  </div>
+</aside>
+
+<!-- ===== 主内容 ===== -->
+<main class="content">
+
+<!-- ===== Section 1: 模块总览 ===== -->
+<section id="sec1">
+  <h2 class="section-title"><span class="num">1</span>判断推理模块总览</h2>
+
+  <p>判断推理是行测的第三大模块（国考约 40 题、省考 30～35 题），考的核心能力就一句话：<mark class="key">识别规律 + 套用规则</mark>。它不像资料分析靠算，而靠"看"和"推"。</p>
+
+  <h3>四大题型一览</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>题型</th>
+          <th>长什么样</th>
+          <th>考什么</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>图形推理</td><td>一串图 + 一个问号</td><td>找图形的变化规律</td></tr>
+        <tr><td>定义判断</td><td>给一段定义 + 四个选项</td><td>判断谁符合 / 不符合定义</td></tr>
+        <tr><td>类比推理</td><td>给一组词，选关系相同的一组</td><td>找词项之间的关系</td></tr>
+        <tr><td>逻辑判断</td><td>给一段论述</td><td>翻译推理、加强削弱等</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout info">
+    <span class="callout-title">备考主线</span>
+    <p><strong>先定性题型，再套对应方法。</strong>看到一道题，第一步永远是"它属于哪一类"，定错了类，越做越远。</p>
+  </div>
+</section>
+
+<!-- ===== Section 2: 图形推理 题型特征 ===== -->
+<section id="sec2">
+  <h2 class="section-title"><span class="num">2</span>图形推理 · 题型特征</h2>
+
+  <p>图形推理的题干是<strong>一串图形</strong>（一般 5 个）加一个问号，让你推出问号处该是哪个。它的规律分两大类：<strong>规律类</strong>（位置、样式、数量、属性…）和<strong>空间类</strong>（立体图形）。咱们从规律类里最基础的<strong>位置类</strong>开始。</p>
+
+  <h3>怎么一眼认出"位置类"？</h3>
+
+  <div class="callout success">
+    <span class="callout-title">题型特征（两条）</span>
+    <p>1. <strong>各图组成元素相同</strong>——图形里的小元素（点、线、箭头、小黑块……）的<mark class="key">个数、种类完全一样</mark>，只是"挪了地方"。</p>
+    <p>2. <strong>整体或局部的元素位置变化明显</strong>——一眼就能看出某个元素在移动、在转，或翻了面。</p>
+  </div>
+
+  <div class="formula-box">
+    <span class="formula-label">解题要点（口诀）</span>
+    <div class="formula">元素组成相同，<span class="highlight">优先看动态位置</span></div>
+  </div>
+
+  <p>也就是说：先<strong>数元素</strong>，如果前后图形元素"长得一模一样"，就别急着去数线条、数交点——先看<strong>位置在怎么动</strong>。这是图形推理"三看总纲"的第一看。</p>
+
+  <h3>图形推理「三看总纲」</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>看到什么</th>
+          <th>往哪想</th>
+          <th>典型规律</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>元素组成<strong>相同</strong></td><td>位置类</td><td>平移、旋转、翻转</td></tr>
+        <tr><td>元素组成<strong>相似</strong></td><td>样式类</td><td>遍历、加减同异、黑白运算</td></tr>
+        <tr><td>元素组成<strong>凌乱</strong></td><td>数量 / 属性类</td><td>点线面角素、对称、曲直、开闭</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout warn">
+    <span class="callout-title">为什么要先定大类？</span>
+    <p>因为同一个图形可以往好几个方向想。先按"元素相同 / 相似 / 凌乱"把范围缩小，才不会在每个规律上都试一遍、浪费时间。</p>
+  </div>
+</section>
+
+<!-- ===== Section 3: 位置类规律 ===== -->
+<section id="sec3">
+  <h2 class="section-title"><span class="num">3</span>位置类规律：平移 / 旋转 / 翻转</h2>
+
+  <p>位置类就三个规律，俗称"位置三兄弟"：<strong>平移（挪）、旋转（转）、翻转（翻）</strong>。</p>
+
+  <h3>① 平移 —— 元素在"挪地方"</h3>
+
+  <p>元素沿着某个方向整体或局部地移动，<strong>形状和朝向都不变</strong>，只是换了个位置。抓住三个要素：</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>要素</th>
+          <th>看什么</th>
+          <th>常见情况</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>方向</td><td>往哪挪</td><td>上下左右；顺时针 / 逆时针（沿边、绕圈）；对角线</td></tr>
+        <tr><td>步长</td><td>挪几格</td><td>恒定（每次 1 格）；递增 / 递减（每次多挪 1 格）</td></tr>
+        <tr><td>元素</td><td>谁在挪</td><td>整体一起挪；局部挪（常"分堆各走各的"）</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout danger">
+    <span class="callout-title">平移的三个坑</span>
+    <p>① <strong>绕圈</strong>：走到头回到起点，别当成"没动"。</p>
+    <p>② <strong>折返</strong>：撞到边就往回走，方向要跟着变。</p>
+    <p>③ <strong>元素覆盖</strong>：两个元素同时走到一格，注意谁压谁、这格算谁的。</p>
+  </div>
+
+  <div class="example-card">
+    <h4>举例</h4>
+    <p>一个黑块沿九宫格外圈，每次顺时针挪 2 格。图 1 在左上角，图 2 应在哪？</p>
+    <div class="callout info">
+      <span class="callout-title">思路</span>
+      <p>沿外圈顺时针数 2 格即可。关键是先锁定"<strong>顺时针 + 每次 2 格</strong>"这个规律，再照搬。</p>
+    </div>
+  </div>
+
+  <h3>② 旋转 —— 图形在"转动"</h3>
+
+  <p>图形绕某个点<strong>整体转动</strong>，形状不变，但<strong>朝向改变</strong>了。抓两个要素：</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>要素</th>
+          <th>看什么</th>
+          <th>常见情况</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>方向</td><td>往哪转</td><td>顺时针 / 逆时针</td></tr>
+        <tr><td>角度</td><td>转多少</td><td>45°、90°、180°；也可能是 60°、120°</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout info">
+    <span class="callout-title">角度也可能"递增"</span>
+    <p>不一定是每次都转相同的度数，也可能每次多转一点（如每次 +45°：45°→90°→135°…）。所以看不出来时，把每步转的角度算出来对比。</p>
+  </div>
+
+  <div class="example-card">
+    <h4>举例</h4>
+    <p>一个箭头，图 1 朝上，图 2 朝右，图 3 朝下，图 4 该朝哪？</p>
+    <div class="callout info">
+      <span class="callout-title">思路</span>
+      <p>从"上"到"右"再到"下"，是每次<strong>顺时针转 90°</strong>，所以图 4 朝<strong>左</strong>。</p>
+    </div>
+  </div>
+
+  <h3>③ 翻转 —— 图形在"照镜子"</h3>
+
+  <p>图形沿某条<strong>轴</strong>做镜像，像照镜子一样翻过去。看的是<strong>翻哪条轴</strong>：</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>翻转轴</th>
+          <th>效果</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>水平轴（横轴）</td><td>上下对调（上下翻）</td></tr>
+        <tr><td>垂直轴（竖轴）</td><td>左右对调（左右翻）</td></tr>
+        <tr><td>对角线轴</td><td>斜着翻，两个角互换</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout danger">
+    <span class="callout-title">翻转的"命门"：手性会变</span>
+    <p>翻转是<strong>镜像</strong>，会把"顺时针"变成"逆时针"（左右、上下都被调换）。这是它和旋转最大的区别。</p>
+    <p>所以：<strong>看一个图形到底是"转了"还是"翻了"，就盯它的手性——手性不变是旋转，手性变了是翻转。</strong></p>
+  </div>
+
+  <h3>三兄弟一眼区分</h3>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>规律</th>
+          <th>变化方式</th>
+          <th>形状朝向</th>
+          <th>手性（顺 / 逆时针）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>平移</td><td>位移（挪）</td><td>不变</td><td>不变</td></tr>
+        <tr><td>旋转</td><td>转动（转）</td><td>改变</td><td>不变</td></tr>
+        <tr><td>翻转</td><td>镜像（翻）</td><td>改变</td><td><strong>改变</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="callout success">
+    <span class="callout-title">一句话记住</span>
+    <p>平移用"挪"，旋转用"转"，翻转用"翻"；<strong>翻转是唯一会左右互换、把顺时针变成逆时针的。</strong></p>
+  </div>
+</section>
+
+<!-- ===== Section 4: 解题要点与口诀 ===== -->
+<section id="sec4">
+  <h2 class="section-title"><span class="num">4</span>解题要点与口诀</h2>
+
+  <h3>判断三步走</h3>
+
+  <ol>
+    <li>先看<strong>元素组成</strong>——相同 / 相似 / 凌乱，定大类。</li>
+    <li>元素相同 → 优先<strong>动态位置</strong>（平移 / 旋转 / 翻转）。</li>
+    <li>数一数元素个数和种类，找出"<strong>谁在动、怎么动</strong>"（方向 + 步长 / 角度 / 轴）。</li>
+  </ol>
+
+  <h3>口诀</h3>
+
+  <div class="callout warn">
+    <span class="callout-title">背下来就能用</span>
+    <p>· 元素<strong>相同</strong>看位置，元素<strong>相似</strong>看样式，元素<strong>凌乱</strong>数数量 / 看属性。</p>
+    <p>· 位置三兄弟：平移（方向 + 步长）、旋转（方向 + 角度）、翻转（看轴 + 手性）。</p>
+    <p>· 翻转镜像手性变，旋转平移手性不变。</p>
+  </div>
+
+  <h3>易错点提醒</h3>
+
+  <div class="callout danger">
+    <span class="callout-title">别踩这两个坑</span>
+    <p>① 一上来就数线条、数交点，忽略了"<strong>元素根本没变，只是挪了位置</strong>"。先数元素，再动笔。</p>
+    <p>② 旋转和翻转看混。<strong>不确定就看手性</strong>——拿箭头、字母、不对称图形当参照，转过去还是翻过去，一目了然。</p>
+  </div>
+
+  <div class="callout info">
+    <span class="callout-title">下次继续</span>
+    <p>位置类三种规律搞定后，接着学<strong>样式类</strong>（遍历、加减同异、黑白运算）和<strong>数量类</strong>（点线面角素）。</p>
+  </div>
+</section>
+
+</main>
+</main>
+</div>
+
+<!-- ===== 移动端交互控件 ===== -->
+<div class="sidebar-overlay" id="overlay"></div>
+<button class="toc-toggle" id="tocToggle" aria-label="打开目录">☰</button>
+<button class="to-top" id="toTop" aria-label="回到顶部">↑</button>
+
+<footer>
+  <div class="day-counter">Day 1 · 图形推理 · 位置类</div>
+  <p>行测备考 · 贵州省考/事业单位联考 · 目标210+<br>
+  2026-10-13 更新 | 持续学习中</p>
+</footer>
+
+<script>
+(function () {
+  var sidebar  = document.getElementById('sidebar');
+  var overlay  = document.getElementById('overlay');
+  var toggle   = document.getElementById('tocToggle');
+  var toTop     = document.getElementById('toTop');
+  var bar      = document.getElementById('progressBar');
+  var pct      = document.getElementById('progressPct');
+  var links    = Array.prototype.slice.call(sidebar.querySelectorAll('a[href^="#"]'));
+  var sections = links.map(function (a) {
+    return document.getElementById(a.getAttribute('href').slice(1));
+  }).filter(Boolean);
+
+  function isMobile() { return window.matchMedia('(max-width: 860px)').matches; }
+
+  function openDrawer() {
+    sidebar.classList.add('open');
+    overlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeDrawer() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  toggle.addEventListener('click', function () {
+    sidebar.classList.contains('open') ? closeDrawer() : openDrawer();
+  });
+  overlay.addEventListener('click', closeDrawer);
+
+  // 点击目录项后在移动端自动收起
+  links.forEach(function (a) {
+    a.addEventListener('click', function () {
+      if (isMobile()) setTimeout(closeDrawer, 180);
+    });
+  });
+
+  // ESC 关闭抽屉
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && sidebar.classList.contains('open')) closeDrawer();
+  });
+
+  toTop.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // 滚动高亮当前章节 + 阅读进度
+  function onScroll() {
+    var y = window.scrollY || document.documentElement.scrollTop;
+
+    // 阅读进度
+    var docH = document.documentElement.scrollHeight - window.innerHeight;
+    var ratio = docH > 0 ? Math.min(100, Math.max(0, (y / docH) * 100)) : 0;
+    bar.style.width = ratio.toFixed(1) + '%';
+    pct.textContent = Math.round(ratio) + '%';
+
+    // 回到顶部按钮
+    y > 400 ? toTop.classList.add('show') : toTop.classList.remove('show');
+
+    // 当前章节高亮：取最后一个已越过阈值的 section
+    var idx = 0;
+    var threshold = y + window.innerHeight * 0.28;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].offsetTop <= threshold) idx = i;
+    }
+    // 滚到底部时锁定最后一项
+    if (docH > 0 && y >= docH - 4) idx = sections.length - 1;
+
+    links.forEach(function (a, i) {
+      a.classList.toggle('active', i === idx);
+    });
+
+    // 桌面端：让激活项保持在侧栏可见范围内
+    if (!isMobile()) {
+      var act = links[idx];
+      if (act) {
+        var top = act.offsetTop, h = act.offsetHeight;
+        var st = sidebar.scrollTop, vh = sidebar.clientHeight;
+        if (top < st) sidebar.scrollTop = top - 8;
+        else if (top + h > st + vh) sidebar.scrollTop = top + h - vh + 8;
+      }
+    }
+  }
+
+  var ticking = false;
+  function requestScroll() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(function () { onScroll(); ticking = false; });
+    }
+  }
+
+  window.addEventListener('scroll', requestScroll, { passive: true });
+  window.addEventListener('resize', function () {
+    if (!isMobile()) closeDrawer();
+    requestScroll();
+  });
+  onScroll();
+})();
+</script>
+
+<script id="note-search-script">
+(function () {
+  var input = document.getElementById('noteSearchInput');
+  var box = document.getElementById('noteSearchResults');
+  var count = document.getElementById('noteSearchCount');
+  if (!input || !box) return;
+
+  // ---- 建立搜索索引：按 section + h3/h4 子标题切块 ----
+  var chunks = [];
+  var uid = 0;
+  document.querySelectorAll('section[id]').forEach(function (sec) {
+    var secH = sec.querySelector('h2');
+    var secTitle = secH ? secH.textContent.replace(/^\s*[\d.、]+\s*/, '').trim() : '';
+    var curLabel = secTitle || sec.id;
+    var curText = '';
+    var target = sec;
+    var targetId = sec.id;
+    function flush() {
+      var txt = curText.replace(/\s+/g, ' ');
+      if (txt.trim().length > 0) {
+        chunks.push({ label: curLabel, text: txt, targetId: targetId, sec: sec });
+      }
+      curText = '';
+    }
+    function walk(node) {
+      if (node.nodeType === 3) { curText += node.textContent; return; }
+      if (node.nodeType !== 1) return;
+      var tag = node.tagName;
+      if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'NOSCRIPT') return;
+      if (tag === 'H2') return;
+      if (tag === 'H3' || tag === 'H4') {
+        flush();
+        curLabel = (secTitle ? secTitle + ' · ' : '') + node.textContent.replace(/\s+/g, ' ').trim();
+        target = node;
+        if (!node.id) { node.id = 'ns_' + (++uid); }
+        targetId = node.id;
+        curText += ' ' + node.textContent + ' ';
+        return;
+      }
+      for (var i = 0; i < node.childNodes.length; i++) walk(node.childNodes[i]);
+    }
+    Array.prototype.forEach.call(sec.childNodes, walk);
+    flush();
+  });
+
+  // ---- 高亮相关 ----
+  var highlighted = [];
+  function clearHighlights() {
+    highlighted.forEach(function (m) {
+      var p = m.parentNode;
+      if (p) p.replaceChild(document.createTextNode(m.textContent), m);
+    });
+    highlighted = [];
+  }
+  function highlightIn(el, q) {
+    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
+    var nodes = [];
+    while (walker.nextNode()) nodes.push(walker.currentNode);
+    var ql = q.toLowerCase();
+    nodes.forEach(function (tn) {
+      var parent = tn.parentNode;
+      if (!parent) return;
+      if (parent.closest && (parent.closest('.note-search') || parent.closest('script') || parent.closest('style'))) return;
+      var text = tn.textContent;
+      var lower = text.toLowerCase();
+      var idx = lower.indexOf(ql);
+      if (idx === -1) return;
+      var frag = document.createDocumentFragment();
+      var pos = 0;
+      while (idx !== -1) {
+        if (idx > pos) frag.appendChild(document.createTextNode(text.slice(pos, idx)));
+        var mk = document.createElement('mark');
+        mk.className = 'srch-hl';
+        mk.textContent = text.slice(idx, idx + q.length);
+        highlighted.push(mk);
+        frag.appendChild(mk);
+        pos = idx + q.length;
+        idx = lower.indexOf(ql, pos);
+      }
+      if (pos < text.length) frag.appendChild(document.createTextNode(text.slice(pos)));
+      parent.replaceChild(frag, tn);
+    });
+  }
+
+  function esc(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+  function snippet(text, q) {
+    var i = text.toLowerCase().indexOf(q.toLowerCase());
+    if (i === -1) return esc(text.slice(0, 60)) + (text.length > 60 ? '…' : '');
+    var start = Math.max(0, i - 22);
+    var end = Math.min(text.length, i + q.length + 40);
+    var pre = (start > 0 ? '…' : '') + text.slice(start, i);
+    var m = text.slice(i, i + q.length);
+    var post = text.slice(i + q.length, end) + (end < text.length ? '…' : '');
+    return esc(pre) + '<mark class="srch-hl">' + esc(m) + '</mark>' + esc(post);
+  }
+
+  // ---- 搜索 ----
+  var debounceTimer = null;
+  function doSearch() {
+    clearHighlights();
+    var q = input.value.trim();
+    if (!q) { box.hidden = true; count.textContent = ''; return; }
+    var ql = q.toLowerCase();
+    var hits = [];
+    chunks.forEach(function (c) {
+      var lower = c.text.toLowerCase();
+      var n = 0, idx = lower.indexOf(ql);
+      while (idx !== -1) { n++; idx = lower.indexOf(ql, idx + ql.length); }
+      if (n > 0) {
+        hits.push({ c: c, n: n, labelHit: c.label.toLowerCase().indexOf(ql) !== -1 ? 1 : 0 });
+      }
+    });
+    hits.sort(function (a, b) {
+      if (a.labelHit !== b.labelHit) return b.labelHit - a.labelHit;
+      return b.n - a.n;
+    });
+    count.textContent = hits.length ? '共 ' + hits.length + ' 处' : '';
+    box.innerHTML = '';
+    if (!hits.length) {
+      box.innerHTML = '<div class="ns-empty">没有找到「' + esc(q) + '」相关内容</div>';
+    } else {
+      hits.slice(0, 30).forEach(function (h) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'ns-item';
+        btn.innerHTML = '<span class="ns-label">' + esc(h.c.label) + '</span>' +
+                        '<span class="ns-snippet">' + snippet(h.c.text, q) + '</span>';
+        btn.addEventListener('click', function () { goTo(h); });
+        box.appendChild(btn);
+      });
+    }
+    box.hidden = false;
+  }
+
+  function goTo(h) {
+    clearHighlights();
+    box.hidden = true;
+    var t = document.getElementById(h.c.targetId);
+    if (t) {
+      highlightIn(h.c.sec, input.value.trim());
+      t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      var sec = h.c.sec;
+      sec.classList.remove('flash-section');
+      void sec.offsetWidth;
+      sec.classList.add('flash-section');
+    }
+  }
+
+  input.addEventListener('input', function () {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(doSearch, 160);
+  });
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      var first = box.querySelector('.ns-item');
+      if (first) first.click();
+    } else if (e.key === 'Escape') {
+      box.hidden = true;
+      count.textContent = '';
+      input.blur();
+    }
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('.note-search')) box.hidden = true;
+  });
+})();
+</script>
+</body>
+</html>
