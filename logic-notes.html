@@ -834,11 +834,23 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td>方向</td><td>往哪挪</td><td>上下左右；顺时针 / 逆时针（沿边、绕圈）；对角线</td></tr>
-        <tr><td>步长</td><td>挪几格</td><td>恒定（每次 1 格）；递增 / 递减（每次多挪 1 格）</td></tr>
+        <tr><td>方向</td><td>往哪挪</td><td>上下、左右、对角线（也常见沿边 / 绕圈）</td></tr>
+        <tr><td>步数</td><td>每次挪几格</td><td><strong>常数</strong> 1、1、1、1；<strong>等差</strong> 1、2、3、4；<strong>周期</strong> 1、2、1、2</td></tr>
         <tr><td>元素</td><td>谁在挪</td><td>整体一起挪；局部挪（常"分堆各走各的"）</td></tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="callout success">
+    <span class="callout-title">位置类解题思路</span>
+    <p><strong>相邻图形比对，找相同图案的运动轨迹。</strong>一次只盯相邻两图：抓住同一个"小图案"，看它从哪挪到了哪，方向和步数就都出来了。</p>
+  </div>
+
+  <div class="callout info">
+    <span class="callout-title">步数三种常见型</span>
+    <p>· <strong>常数</strong>：1、1、1、1 —— 每次挪一样多。</p>
+    <p>· <strong>等差</strong>：1、2、3、4 —— 越挪越快，每次多挪 1 格。</p>
+    <p>· <strong>周期</strong>：1、2、1、2 —— 来回循环，别当成"规律断了"。</p>
   </div>
 
   <div class="callout danger">
