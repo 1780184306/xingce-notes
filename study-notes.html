@@ -588,6 +588,49 @@
     gap: 0.5rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
   }
+
+  /* ===== 图片点击放大（lightbox） ===== */
+  .figure-wrap { position: relative; }
+  .figure-wrap img { cursor: zoom-in; }
+  .figure-wrap img:hover { filter: brightness(1.04); }
+  .figure-wrap::after {
+    content: "点击放大";
+    position: absolute; top: 10px; right: 10px; z-index: 2;
+    background: rgba(15, 30, 60, 0.66); color: #fff;
+    font-size: 0.72rem; line-height: 1; padding: 0.32rem 0.62rem;
+    border-radius: 999px; opacity: 0; transition: opacity 0.15s ease;
+    pointer-events: none;
+  }
+  .figure-wrap:hover::after { opacity: 1; }
+  .lightbox {
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(10, 20, 40, 0.85);
+    display: flex; align-items: center; justify-content: center;
+    padding: 2.5vmin;
+  }
+  .lightbox[hidden] { display: none; }
+  .lightbox img {
+    max-width: 95vw; max-height: 92vh; width: auto; height: auto;
+    background: #fff; border-radius: 8px;
+    box-shadow: 0 16px 60px rgba(0, 0, 0, 0.5);
+    cursor: zoom-out;
+  }
+  .lightbox-cap {
+    position: absolute; left: 50%; bottom: 2.4rem; transform: translateX(-50%);
+    max-width: 92vw; color: #e8eef7; font-size: 0.82rem;
+    background: rgba(15, 30, 60, 0.6); padding: 0.35rem 0.95rem;
+    border-radius: 999px; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis;
+  }
+  .lightbox-hint {
+    position: absolute; top: 1.1rem; right: 1.3rem;
+    color: #cfdcec; font-size: 0.78rem;
+    background: rgba(15, 30, 60, 0.5); padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+  }
+  @media (max-width: 640px) {
+    .figure-wrap::after { opacity: 1; }
+  }
 </style>
 <style id="note-search-style">
   /* ===== 站内搜索 ===== */
@@ -2154,5 +2197,40 @@
   });
 })();
 </script>
+<script>
+  /* ===== 图片点击放大 ===== */
+  (function () {
+    var lb = document.createElement('div');
+    lb.className = 'lightbox';
+    lb.hidden = true;
+    lb.innerHTML = '<img alt="放大图"><div class="lightbox-cap"></div><div class="lightbox-hint">点击任意处 / 按 Esc 关闭</div>';
+    document.body.appendChild(lb);
+    var lbImg = lb.querySelector('img');
+    var lbCap = lb.querySelector('.lightbox-cap');
+    function openLightbox(src, cap) {
+      lbImg.src = src;
+      lbCap.textContent = cap || '';
+      lbCap.hidden = !cap;
+      lb.hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lb.hidden = true;
+      document.body.style.overflow = '';
+    }
+    document.querySelectorAll('.figure-wrap img').forEach(function (img) {
+      img.addEventListener('click', function () {
+        var wrap = img.closest('.figure-wrap');
+        var cap = wrap ? wrap.querySelector('.figure-cap') : null;
+        openLightbox(img.currentSrc || img.src, cap ? cap.textContent : '');
+      });
+    });
+    lb.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !lb.hidden) closeLightbox();
+    });
+  })();
+</script>
+
 </body>
 </html>
