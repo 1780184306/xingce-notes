@@ -793,7 +793,7 @@ td .cell-tag {
   }
   .figure-wrap:hover::after { opacity: 1; }
   .lightbox {
-    position: fixed; inset: 0; z-index: 9999;
+    position: fixed; top:0; left:0; right:0; bottom:0; z-index: 9999;
     background: rgba(10, 20, 40, 0.85);
     display: flex; align-items: center; justify-content: center;
     padding: 2.5vmin;
@@ -2417,27 +2417,45 @@ A. 上海　　B. 南京　　C. 苏州　　D. 杭州</div>
     document.body.appendChild(lb);
     var lbImg = lb.querySelector('img');
     var lbCap = lb.querySelector('.lightbox-cap');
+    /* 处于合集（iframe）中时，优先通知父页面用全窗口 lightbox 展示；
+       父页面不可用（单页直接打开）时退回本页内部的 lightbox。 */
+    var embedded = false;
+    try { embedded = !!window.parent && window.parent !== window; } catch (e) {}
+    function post(msg) {
+      if (!embedded) return;
+      try { msg.type = 'xingce-lightbox'; window.parent.postMessage(msg, '*'); } catch (e) {}
+    }
     function openLightbox(src, cap) {
       lbImg.src = src;
       lbCap.textContent = cap || '';
       lbCap.hidden = !cap;
       lb.hidden = false;
       document.body.style.overflow = 'hidden';
+      post({ action: 'open', src: src, cap: cap || '' });
     }
     function closeLightbox() {
       lb.hidden = true;
       document.body.style.overflow = '';
+      post({ action: 'close' });
     }
-    document.querySelectorAll('.figure-wrap img').forEach(function (img) {
-      img.addEventListener('click', function () {
-        var wrap = img.closest('.figure-wrap');
-        var cap = wrap ? wrap.querySelector('.figure-cap') : null;
-        openLightbox(img.currentSrc || img.src, cap ? cap.textContent : '');
-      });
+    /* 事件委托：动态增减图片也不需要重新绑定 */
+    document.addEventListener('click', function (e) {
+      var t = e.target;
+      if (!t || !t.closest) return;
+      var img = t.closest('.figure-wrap img');
+      if (!img) return;
+      var wrap = img.closest('.figure-wrap');
+      var cap = wrap ? wrap.querySelector('.figure-cap') : null;
+      openLightbox(img.currentSrc || img.src, cap ? cap.textContent : '');
     });
     lb.addEventListener('click', closeLightbox);
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && !lb.hidden) closeLightbox();
+    });
+    /* 合集外壳关闭时，同步关闭本页 lightbox，避免双重状态 */
+    window.addEventListener('message', function (e) {
+      var d = e.data;
+      if (d && d.type === 'xingce-lightbox' && d.action === 'close') closeLightbox();
     });
   })();
 </script>
