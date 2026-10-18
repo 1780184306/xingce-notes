@@ -1950,6 +1950,79 @@ A. 上海　　B. 南京　　C. 苏州　　D. 杭州</div>
         </div>
       </div>
 
+  <div class="module-major-divider">🧩 判断推理 · 图形推理</div>
+  <div class="module-divider mod9" id="mod9"><span class="module-divider-icon">9</span>样式类 · 黑白运算</div>
+
+      <!-- ----- 错题：黑白运算顺序坑 ----- -->
+      <div class="error-card">
+        <div class="error-card-header">
+          <span class="err-num" style="background:#7c3aed;">题1</span>
+          <span class="err-title">黑白运算的顺序敏感（白 + 黑 ≠ 黑 + 白）</span>
+          <span class="err-tag">黑白运算</span>
+        </div>
+        <div class="error-card-body">
+
+          <div class="field">
+            <div class="field-label">题目（2026-10-18 复盘小测 · 第 3 题）</div>
+            <div class="question-text">九宫格黑白运算，题干给出的规则表为：黑 + 白 = 黑、黑 + 黑 = 白、白 + 白 = 黑。
+某格：左边图那一格是<strong>白</strong>，右边图对应位置是<strong>黑</strong>。
+问：结果是什么颜色？如果把左右顺序调换成"左黑右白"，结果还一样吗？</div>
+          </div>
+
+          <div class="field">
+            <div class="answer-row">
+              <div class="answer-box wrong">
+                <span class="ans-label">我的答案：</span>黑，并且认为调换顺序后结果一样
+              </div>
+              <div class="answer-box right">
+                <span class="ans-label">正确思路：</span>左白右黑 → 黑（本题答案对）；但调换成左黑右白后<strong>必须回表重查</strong>，题干未给"白 + 黑"，不能推
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="thoughts">
+              <div class="thought-box mine">
+                <span class="tb-label">我的思路</span>
+                <p>"黑 + 白等于黑，调换后右边是白色，但是左边已经是黑色了，所以中间只能是黑色。"——把顺序调换后仍套用原来的规则。</p>
+              </div>
+              <div class="thought-box correct-th">
+                <span class="tb-label">正确思路</span>
+                <ul>
+                  <li>黑白运算的规则表是<strong>分栏</strong>的："白 + 黑"和"黑 + 白"是两栏，各看各的</li>
+                  <li>题干只给了"黑 + 白 = 黑"，<strong>没给"白 + 黑"</strong>→ 无法推导，不能默认相等</li>
+                  <li>真实考题常故意设成不同值（黑 + 白 = 黑、白 + 黑 = 白），顺序一换答案就翻</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="highlight-block error-reason">
+              <span class="hb-label">错误原因</span>
+              <p>默认了"交换律"——把黑白运算当普通加法，认为 白 + 黑 必然等于 黑 + 白，于是把题干给的"黑 + 白"直接套到了"白 + 黑"上。</p>
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">考点</span><br>
+            <span class="kp-tag">黑白运算·顺序敏感</span>
+          </div>
+
+          <div class="field">
+            <div class="highlight-block lesson">
+              <span class="hb-label">教训</span>
+              <ul>
+                <li>口诀：<strong>同位置、查表、顺序敏感</strong></li>
+                <li>"白 + 黑"与"黑 + 白"是规则表里的两栏，<strong>不能互相推</strong></li>
+                <li>表里没有的组合，就是"推不出"——不要凭惯性补一个</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
       <div class="module-major-divider">📋 方法与索引</div>
   <div class="module-divider mod4" id="mod4"><span class="module-divider-icon">4</span>方法论总结</div>
       <!-- ----- 方法论总结卡片 ----- -->
@@ -2166,6 +2239,12 @@ A. 上海　　B. 南京　　C. 苏州　　D. 杭州</div>
             <td>识别了关系但顺序搞反</td>
           </tr>
           <tr>
+            <td>2026-10-18</td>
+            <td><span class="cell-tag" style="background:#ede9fe; color:#5b21b6;">判断推理</span></td>
+            <td>图形推理·黑白运算·顺序敏感</td>
+            <td>把"白+黑"当"黑+白"，误用交换律</td>
+          </tr>
+          <tr>
             <td>2026-08-14</td>
             <td><span class="cell-tag" style="background:#dcfce7; color:#166534;">方法论总结</span></td>
             <td>中心理解·找重点句的本质</td>
@@ -2225,6 +2304,13 @@ A. 上海　　B. 南京　　C. 苏州　　D. 杭州</div>
           <span class="freq-note">— "既…又…"要编号①②逐个打勾，先用更严的条件筛</span>
         </div>
       </li>
+      <li>
+        <span class="freq-icon">⑦</span>
+        <div>
+          <strong>凭惯性跳步·少一步验证</strong>
+          <span class="freq-note">— 黑白运算把"白+黑"当"黑+白"（顺序敏感）；资料分析只验第一个条件；共同点都是"规则没回表核对"</span>
+        </div>
+      </li>
     </ul>
     <p class="freq-add">（以后每次有新错题，往这里加新类型）</p>
   </section>
@@ -2233,7 +2319,7 @@ A. 上海　　B. 南京　　C. 苏州　　D. 杭州</div>
 
 <!-- ========== 页脚 ========== -->
 <footer class="page-footer">
-  <p class="footer-date">文档创建日期：2026-08-14 ｜ 最近更新：2026-10-11</p>
+  <p class="footer-date">文档创建日期：2026-08-14 ｜ 最近更新：2026-10-18</p>
   <span class="footer-status">持续更新中</span>
 </footer>
 
