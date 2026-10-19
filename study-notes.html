@@ -486,6 +486,23 @@
     .mindmap-tips-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
+  /* ===== 树状思维导图（中心向右逐级延伸，小屏横向滑动） ===== */
+  .mm-tree {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.4rem;
+  }
+  .mm-tree svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 860px;
+  }
+  @media (max-width: 760px) {
+    .mm-tree svg { width: auto; max-width: none; }
+  }
+
   /* ===== 模块导航 & 跳转 ===== */
   html { scroll-behavior: smooth; }
   .module-nav {
@@ -811,6 +828,65 @@
   <!-- 一、题型识别 -->
   <section id="sec1">
     <h2 class="section-title"><span class="num">1</span>题型识别（做题第一步！）</h2>
+<!-- 树状思维导图 -->
+<div class="mm-tree">
+<svg viewBox="0 0 842 518" width="842" height="518" role="img" aria-label="中心理解题·题型识别思维导图" style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;display:block">
+<rect x="0" y="0" width="842" height="518" rx="14" fill="#fbf7f1"/>
+<rect x="22.0" y="235.5" width="200.1" height="64.0" rx="10" fill="#b5563f"/>
+<rect x="22.0" y="235.5" width="200.1" height="64.0" rx="10" fill="none" stroke="#8f3f2c" stroke-width="1.6" stroke-opacity="1.00"/>
+<text x="35.0" y="259.5" fill="#ffffff" font-size="17" font-weight="700">中心理解题</text>
+<text x="35.0" y="285.5" fill="#ffffff" font-size="15" font-weight="700">题型识别 · 先看问法</text>
+<path d="M222.1 267.5 C251.1 267.5 251.1 89.0 280.1 89.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="280.1" y="73.0" width="134.0" height="32.0" rx="8" fill="#f6e3dc"/>
+<rect x="280.1" y="73.0" width="134.0" height="32.0" rx="8" fill="none" stroke="#b5563f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="293.1" y="94.0" fill="#b5563f" font-size="13.5" font-weight="700">中心理解题·问法</text>
+<path d="M414.1 89.0 C443.1 89.0 443.1 38.0 472.1 38.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="485.1" y="43.0" fill="#3f3a36" font-size="12.5" font-weight="700">“主要意思是”</text>
+<path d="M414.1 89.0 C443.1 89.0 443.1 72.0 472.1 72.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="485.1" y="77.0" fill="#3f3a36" font-size="12.5" font-weight="700">“意在说明”</text>
+<path d="M414.1 89.0 C443.1 89.0 443.1 106.0 472.1 106.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="485.1" y="111.0" fill="#3f3a36" font-size="12.5" font-weight="700">“重在说明”</text>
+<path d="M414.1 89.0 C443.1 89.0 443.1 140.0 472.1 140.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="485.1" y="145.0" fill="#3f3a36" font-size="12.5" font-weight="700">“概括最准确”</text>
+<path d="M222.1 267.5 C251.1 267.5 251.1 191.0 280.1 191.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="280.1" y="175.0" width="134.0" height="32.0" rx="8" fill="#dfeef5"/>
+<rect x="280.1" y="175.0" width="134.0" height="32.0" rx="8" fill="none" stroke="#2f6f8f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="293.1" y="196.0" fill="#2f6f8f" font-size="13.5" font-weight="700">中心理解题·方法</text>
+<path d="M414.1 191.0 C443.1 191.0 443.1 174.0 472.1 174.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="485.1" y="179.0" fill="#3f3a36" font-size="12.5" font-weight="700">找重点句</text>
+<path d="M414.1 191.0 C443.1 191.0 443.1 208.0 472.1 208.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="485.1" y="213.0" fill="#3f3a36" font-size="12.5" font-weight="700">抓主题词</text>
+<path d="M222.1 267.5 C251.1 267.5 251.1 318.5 280.1 318.5" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="280.1" y="302.5" width="93.5" height="32.0" rx="8" fill="#ece5f6"/>
+<rect x="280.1" y="302.5" width="93.5" height="32.0" rx="8" fill="none" stroke="#7a5ea8" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="293.1" y="323.5" fill="#7a5ea8" font-size="13.5" font-weight="700">细节推断题</text>
+<path d="M373.6 318.5 C422.8 318.5 422.8 276.0 472.1 276.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="485.1" y="281.0" fill="#3f3a36" font-size="12.5" font-weight="700">问法</text>
+<path d="M523.1 276.0 C608.3 276.0 608.3 242.0 693.6 242.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="706.6" y="247.0" fill="#3f3a36" font-size="12.5" font-weight="700">“可以推出”</text>
+<path d="M523.1 276.0 C608.3 276.0 608.3 276.0 693.6 276.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="706.6" y="281.0" fill="#3f3a36" font-size="12.5" font-weight="700">“据此可知”</text>
+<path d="M523.1 276.0 C608.3 276.0 608.3 310.0 693.6 310.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="706.6" y="315.0" fill="#3f3a36" font-size="12.5" font-weight="700">“理解正确的是”</text>
+<path d="M373.6 318.5 C422.8 318.5 422.8 361.0 472.1 361.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="485.1" y="366.0" fill="#3f3a36" font-size="12.5" font-weight="700">方法</text>
+<path d="M523.1 361.0 C608.3 361.0 608.3 344.0 693.6 344.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="706.6" y="349.0" fill="#3f3a36" font-size="12.5" font-weight="700">逐项回文比对</text>
+<path d="M523.1 361.0 C608.3 361.0 608.3 378.0 693.6 378.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="706.6" y="383.0" fill="#3f3a36" font-size="12.5" font-weight="700">找依据</text>
+<path d="M222.1 267.5 C251.1 267.5 251.1 446.0 280.1 446.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="280.1" y="430.0" width="80.0" height="32.0" rx="8" fill="#e2f0e6"/>
+<rect x="280.1" y="430.0" width="80.0" height="32.0" rx="8" fill="none" stroke="#3f7d4f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="293.1" y="451.0" fill="#3f7d4f" font-size="13.5" font-weight="700">核心铁律</text>
+<path d="M360.1 446.0 C416.1 446.0 416.1 412.0 472.1 412.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="485.1" y="417.0" fill="#3f3a36" font-size="12.5" font-weight="700">先看问法再定方法</text>
+<path d="M360.1 446.0 C416.1 446.0 416.1 446.0 472.1 446.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="485.1" y="451.0" fill="#3f3a36" font-size="12.5" font-weight="700">问法决定方法</text>
+<path d="M360.1 446.0 C416.1 446.0 416.1 480.0 472.1 480.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="485.1" y="485.0" fill="#3f3a36" font-size="12.5" font-weight="700">看问法→看选项→读文段</text>
+</svg>
+</div>
+
 
     <!-- 思维导图 -->
     <div class="mindmap">
@@ -1064,6 +1140,53 @@
   <!-- 四、细节推断题方法 -->
   <section id="sec4">
     <h2 class="section-title"><span class="num">4</span>细节推断题方法</h2>
+<!-- 树状思维导图 -->
+<div class="mm-tree">
+<svg viewBox="0 0 674 348" width="674" height="348" role="img" aria-label="细节推断题·方法思维导图" style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;display:block">
+<rect x="0" y="0" width="674" height="348" rx="14" fill="#fbf7f1"/>
+<rect x="22.0" y="125.0" width="111.0" height="64.0" rx="10" fill="#b5563f"/>
+<rect x="22.0" y="125.0" width="111.0" height="64.0" rx="10" fill="none" stroke="#8f3f2c" stroke-width="1.6" stroke-opacity="1.00"/>
+<text x="35.0" y="149.0" fill="#ffffff" font-size="17" font-weight="700">细节推断题</text>
+<text x="35.0" y="175.0" fill="#ffffff" font-size="15" font-weight="700">回文找依据</text>
+<path d="M133.0 157.0 C162.0 157.0 162.0 55.0 191.0 55.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="191.0" y="39.0" width="80.0" height="32.0" rx="8" fill="#f6e3dc"/>
+<rect x="191.0" y="39.0" width="80.0" height="32.0" rx="8" fill="none" stroke="#b5563f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="204.0" y="60.0" fill="#b5563f" font-size="13.5" font-weight="700">核心方法</text>
+<path d="M271.0 55.0 C300.0 55.0 300.0 38.0 329.0 38.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="342.0" y="43.0" fill="#3f3a36" font-size="12.5" font-weight="700">逐项回文比对</text>
+<path d="M271.0 55.0 C300.0 55.0 300.0 72.0 329.0 72.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="342.0" y="77.0" fill="#3f3a36" font-size="12.5" font-weight="700">每个选项回文找依据</text>
+<path d="M133.0 157.0 C162.0 157.0 162.0 140.0 191.0 140.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="191.0" y="124.0" width="80.0" height="32.0" rx="8" fill="#dfeef5"/>
+<rect x="191.0" y="124.0" width="80.0" height="32.0" rx="8" fill="none" stroke="#2f6f8f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="204.0" y="145.0" fill="#2f6f8f" font-size="13.5" font-weight="700">三大陷阱</text>
+<path d="M271.0 140.0 C300.0 140.0 300.0 106.0 329.0 106.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="342.0" y="111.0" fill="#3f3a36" font-size="12.5" font-weight="700">无中生有</text>
+<path d="M405.0 106.0 C465.2 106.0 465.2 106.0 525.5 106.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="538.5" y="111.0" fill="#3f3a36" font-size="12.5" font-weight="700">选项内容文段没说</text>
+<path d="M271.0 140.0 C300.0 140.0 300.0 140.0 329.0 140.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="342.0" y="145.0" fill="#3f3a36" font-size="12.5" font-weight="700">过度推断</text>
+<path d="M405.0 140.0 C465.2 140.0 465.2 140.0 525.5 140.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="538.5" y="145.0" fill="#3f3a36" font-size="12.5" font-weight="700">程度加重文段没说</text>
+<path d="M271.0 140.0 C300.0 140.0 300.0 174.0 329.0 174.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="342.0" y="179.0" fill="#3f3a36" font-size="12.5" font-weight="700">偷换概念</text>
+<path d="M405.0 174.0 C465.2 174.0 465.2 174.0 525.5 174.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="538.5" y="179.0" fill="#3f3a36" font-size="12.5" font-weight="700">主体/概念被换掉</text>
+<path d="M133.0 157.0 C162.0 157.0 162.0 259.0 191.0 259.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="191.0" y="243.0" width="80.0" height="32.0" rx="8" fill="#ece5f6"/>
+<rect x="191.0" y="243.0" width="80.0" height="32.0" rx="8" fill="none" stroke="#7a5ea8" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="204.0" y="264.0" fill="#7a5ea8" font-size="13.5" font-weight="700">问法特征</text>
+<path d="M271.0 259.0 C300.0 259.0 300.0 208.0 329.0 208.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="342.0" y="213.0" fill="#3f3a36" font-size="12.5" font-weight="700">“可以推出”</text>
+<path d="M271.0 259.0 C300.0 259.0 300.0 242.0 329.0 242.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="342.0" y="247.0" fill="#3f3a36" font-size="12.5" font-weight="700">“据此可知”</text>
+<path d="M271.0 259.0 C300.0 259.0 300.0 276.0 329.0 276.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="342.0" y="281.0" fill="#3f3a36" font-size="12.5" font-weight="700">“说法正确/错误”</text>
+<path d="M271.0 259.0 C300.0 259.0 300.0 310.0 329.0 310.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="342.0" y="315.0" fill="#3f3a36" font-size="12.5" font-weight="700">“理解正确的是”</text>
+</svg>
+</div>
+
 
     <!-- 思维导图 -->
     <div class="mindmap">
@@ -1288,6 +1411,65 @@
   <!-- 九、语句排序题方法论 -->
   <section id="sec9">
     <h2 class="section-title"><span class="num">9</span>语句排序题方法论（8/14 学）</h2>
+<!-- 树状思维导图 -->
+<div class="mm-tree">
+<svg viewBox="0 0 727 552" width="727" height="552" role="img" aria-label="语句排序题·方法论思维导图" style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;display:block">
+<rect x="0" y="0" width="727" height="552" rx="14" fill="#fbf7f1"/>
+<rect x="22.0" y="244.0" width="111.0" height="64.0" rx="10" fill="#b5563f"/>
+<rect x="22.0" y="244.0" width="111.0" height="64.0" rx="10" fill="none" stroke="#8f3f2c" stroke-width="1.6" stroke-opacity="1.00"/>
+<text x="35.0" y="268.0" fill="#ffffff" font-size="17" font-weight="700">语句排序题</text>
+<text x="35.0" y="294.0" fill="#ffffff" font-size="15" font-weight="700">从选项入手</text>
+<path d="M133.0 276.0 C162.0 276.0 162.0 72.0 191.0 72.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="191.0" y="56.0" width="80.0" height="32.0" rx="8" fill="#f6e3dc"/>
+<rect x="191.0" y="56.0" width="80.0" height="32.0" rx="8" fill="none" stroke="#b5563f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="204.0" y="77.0" fill="#b5563f" font-size="13.5" font-weight="700">核心策略</text>
+<path d="M271.0 72.0 C332.8 72.0 332.8 38.0 394.6 38.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="407.6" y="43.0" fill="#3f3a36" font-size="12.5" font-weight="700">从选项入手</text>
+<path d="M271.0 72.0 C332.8 72.0 332.8 72.0 394.6 72.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="407.6" y="77.0" fill="#3f3a36" font-size="12.5" font-weight="700">不要自己排</text>
+<path d="M271.0 72.0 C332.8 72.0 332.8 106.0 394.6 106.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="407.6" y="111.0" fill="#3f3a36" font-size="12.5" font-weight="700">首句→捆绑→尾句→验证</text>
+<path d="M133.0 276.0 C162.0 276.0 162.0 233.5 191.0 233.5" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="191.0" y="217.5" width="115.4" height="32.0" rx="8" fill="#dfeef5"/>
+<rect x="191.0" y="217.5" width="115.4" height="32.0" rx="8" fill="none" stroke="#2f6f8f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="204.0" y="238.5" fill="#2f6f8f" font-size="13.5" font-weight="700">第1步·定首句</text>
+<path d="M306.4 233.5 C350.5 233.5 350.5 191.0 394.6 191.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="407.6" y="196.0" fill="#3f3a36" font-size="12.5" font-weight="700">不能做首句</text>
+<path d="M483.1 191.0 C549.6 191.0 549.6 140.0 616.1 140.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="629.1" y="145.0" fill="#3f3a36" font-size="12.5" font-weight="700">代词开头</text>
+<path d="M483.1 191.0 C549.6 191.0 549.6 174.0 616.1 174.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="629.1" y="179.0" fill="#3f3a36" font-size="12.5" font-weight="700">关联词后件</text>
+<path d="M483.1 191.0 C549.6 191.0 549.6 208.0 616.1 208.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="629.1" y="213.0" fill="#3f3a36" font-size="12.5" font-weight="700">举例词</text>
+<path d="M483.1 191.0 C549.6 191.0 549.6 242.0 616.1 242.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="629.1" y="247.0" fill="#3f3a36" font-size="12.5" font-weight="700">指示性表达</text>
+<path d="M306.4 233.5 C350.5 233.5 350.5 276.0 394.6 276.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="407.6" y="281.0" fill="#3f3a36" font-size="12.5" font-weight="700">下定义适合做首句</text>
+<path d="M133.0 276.0 C162.0 276.0 162.0 361.0 191.0 361.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="191.0" y="345.0" width="115.4" height="32.0" rx="8" fill="#ece5f6"/>
+<rect x="191.0" y="345.0" width="115.4" height="32.0" rx="8" fill="none" stroke="#7a5ea8" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="204.0" y="366.0" fill="#7a5ea8" font-size="13.5" font-weight="700">第2步·找捆绑</text>
+<path d="M306.4 361.0 C350.5 361.0 350.5 310.0 394.6 310.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="407.6" y="315.0" fill="#3f3a36" font-size="12.5" font-weight="700">关联词：找配对词</text>
+<path d="M306.4 361.0 C350.5 361.0 350.5 344.0 394.6 344.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="407.6" y="349.0" fill="#3f3a36" font-size="12.5" font-weight="700">代词：先本体后代词</text>
+<path d="M306.4 361.0 C350.5 361.0 350.5 378.0 394.6 378.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="407.6" y="383.0" fill="#3f3a36" font-size="12.5" font-weight="700">时间/逻辑顺序</text>
+<path d="M306.4 361.0 C350.5 361.0 350.5 412.0 394.6 412.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="407.6" y="417.0" fill="#3f3a36" font-size="12.5" font-weight="700">话题一致捆绑</text>
+<path d="M133.0 276.0 C162.0 276.0 162.0 480.0 191.0 480.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="191.0" y="464.0" width="145.6" height="32.0" rx="8" fill="#e2f0e6"/>
+<rect x="191.0" y="464.0" width="145.6" height="32.0" rx="8" fill="none" stroke="#3f7d4f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="204.0" y="485.0" fill="#3f7d4f" font-size="13.5" font-weight="700">第3/4步·尾句验证</text>
+<path d="M336.6 480.0 C365.6 480.0 365.6 446.0 394.6 446.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="407.6" y="451.0" fill="#3f3a36" font-size="12.5" font-weight="700">总结句适合做尾句</text>
+<path d="M336.6 480.0 C365.6 480.0 365.6 480.0 394.6 480.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="407.6" y="485.0" fill="#3f3a36" font-size="12.5" font-weight="700">对策句适合做尾句</text>
+<path d="M336.6 480.0 C365.6 480.0 365.6 514.0 394.6 514.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="407.6" y="519.0" fill="#3f3a36" font-size="12.5" font-weight="700">通读验证逻辑与指代</text>
+</svg>
+</div>
+
 
     <!-- 思维导图 -->
     <div class="mindmap">
@@ -1428,6 +1610,57 @@
   <!-- 十、语句衔接题方法论 -->
   <section id="sec10">
     <h2 class="section-title"><span class="num">10</span>语句衔接题方法论（8/16 学）</h2>
+<!-- 树状思维导图 -->
+<div class="mm-tree">
+<svg viewBox="0 0 615 450" width="615" height="450" role="img" aria-label="语句衔接题·方法论思维导图" style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;display:block">
+<rect x="0" y="0" width="615" height="450" rx="14" fill="#fbf7f1"/>
+<rect x="22.0" y="193.0" width="176.6" height="64.0" rx="10" fill="#b5563f"/>
+<rect x="22.0" y="193.0" width="176.6" height="64.0" rx="10" fill="none" stroke="#8f3f2c" stroke-width="1.6" stroke-opacity="1.00"/>
+<text x="35.0" y="217.0" fill="#ffffff" font-size="17" font-weight="700">语句衔接题</text>
+<text x="35.0" y="243.0" fill="#ffffff" font-size="15" font-weight="700">看位置 + 话题一致</text>
+<path d="M198.6 225.0 C227.6 225.0 227.6 72.0 256.6 72.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="256.6" y="56.0" width="80.0" height="32.0" rx="8" fill="#f6e3dc"/>
+<rect x="256.6" y="56.0" width="80.0" height="32.0" rx="8" fill="none" stroke="#b5563f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="269.6" y="77.0" fill="#b5563f" font-size="13.5" font-weight="700">核心铁律</text>
+<path d="M336.6 72.0 C379.1 72.0 379.1 38.0 421.6 38.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="434.6" y="43.0" fill="#3f3a36" font-size="12.5" font-weight="700">最佳选项像一座桥</text>
+<path d="M336.6 72.0 C379.1 72.0 379.1 72.0 421.6 72.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="434.6" y="77.0" fill="#3f3a36" font-size="12.5" font-weight="700">前脚踩上文话题</text>
+<path d="M336.6 72.0 C379.1 72.0 379.1 106.0 421.6 106.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="434.6" y="111.0" fill="#3f3a36" font-size="12.5" font-weight="700">后脚迈下文内容</text>
+<path d="M198.6 225.0 C227.6 225.0 227.6 174.0 256.6 174.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="256.6" y="158.0" width="107.0" height="32.0" rx="8" fill="#dfeef5"/>
+<rect x="256.6" y="158.0" width="107.0" height="32.0" rx="8" fill="none" stroke="#2f6f8f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="269.6" y="179.0" fill="#2f6f8f" font-size="13.5" font-weight="700">看位置·三种</text>
+<path d="M363.6 174.0 C392.6 174.0 392.6 140.0 421.6 140.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="434.6" y="145.0" fill="#3f3a36" font-size="12.5" font-weight="700">空在开头：引出后文话题</text>
+<path d="M363.6 174.0 C392.6 174.0 392.6 174.0 421.6 174.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="434.6" y="179.0" fill="#3f3a36" font-size="12.5" font-weight="700">空在中间：承上启下</text>
+<path d="M363.6 174.0 C392.6 174.0 392.6 208.0 421.6 208.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="434.6" y="213.0" fill="#3f3a36" font-size="12.5" font-weight="700">空在结尾：总结或收束</text>
+<path d="M198.6 225.0 C227.6 225.0 227.6 276.0 256.6 276.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="256.6" y="260.0" width="80.0" height="32.0" rx="8" fill="#ece5f6"/>
+<rect x="256.6" y="260.0" width="80.0" height="32.0" rx="8" fill="none" stroke="#7a5ea8" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="269.6" y="281.0" fill="#7a5ea8" font-size="13.5" font-weight="700">尾句陷阱</text>
+<path d="M336.6 276.0 C379.1 276.0 379.1 242.0 421.6 242.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="434.6" y="247.0" fill="#3f3a36" font-size="12.5" font-weight="700">“因此/所以”不一定正确</text>
+<path d="M336.6 276.0 C379.1 276.0 379.1 276.0 421.6 276.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="434.6" y="281.0" fill="#3f3a36" font-size="12.5" font-weight="700">总结原话题→正确</text>
+<path d="M336.6 276.0 C379.1 276.0 379.1 310.0 421.6 310.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="434.6" y="315.0" fill="#3f3a36" font-size="12.5" font-weight="700">引出新话题→错误</text>
+<path d="M198.6 225.0 C227.6 225.0 227.6 378.0 256.6 378.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="256.6" y="362.0" width="80.0" height="32.0" rx="8" fill="#e2f0e6"/>
+<rect x="256.6" y="362.0" width="80.0" height="32.0" rx="8" fill="none" stroke="#3f7d4f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="269.6" y="383.0" fill="#3f7d4f" font-size="13.5" font-weight="700">问法特征</text>
+<path d="M336.6 378.0 C379.1 378.0 379.1 344.0 421.6 344.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="434.6" y="349.0" fill="#3f3a36" font-size="12.5" font-weight="700">“填入横线最恰当的是”</text>
+<path d="M336.6 378.0 C379.1 378.0 379.1 378.0 421.6 378.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="434.6" y="383.0" fill="#3f3a36" font-size="12.5" font-weight="700">中间挖一个空</text>
+<path d="M336.6 378.0 C379.1 378.0 379.1 412.0 421.6 412.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="434.6" y="417.0" fill="#3f3a36" font-size="12.5" font-weight="700">填一句最合适的</text>
+</svg>
+</div>
+
 
     <!-- 思维导图 -->
     <div class="mindmap">
@@ -1540,6 +1773,65 @@
   <!-- 十一、逻辑填空方法论 -->
   <section id="sec11">
     <h2 class="section-title"><span class="num">11</span>逻辑填空方法论（8/17 学）</h2>
+<!-- 树状思维导图 -->
+<div class="mm-tree">
+<svg viewBox="0 0 841 552" width="841" height="552" role="img" aria-label="逻辑填空·方法论思维导图" style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;display:block">
+<rect x="0" y="0" width="841" height="552" rx="14" fill="#fbf7f1"/>
+<rect x="22.0" y="227.0" width="193.6" height="64.0" rx="10" fill="#b5563f"/>
+<rect x="22.0" y="227.0" width="193.6" height="64.0" rx="10" fill="none" stroke="#8f3f2c" stroke-width="1.6" stroke-opacity="1.00"/>
+<text x="35.0" y="251.0" fill="#ffffff" font-size="17" font-weight="700">逻辑填空</text>
+<text x="35.0" y="277.0" fill="#ffffff" font-size="15" font-weight="700">语境分析 + 词义辨析</text>
+<path d="M215.6 259.0 C244.6 259.0 244.6 55.0 273.6 55.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="273.6" y="39.0" width="80.0" height="32.0" rx="8" fill="#f6e3dc"/>
+<rect x="273.6" y="39.0" width="80.0" height="32.0" rx="8" fill="none" stroke="#b5563f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="286.6" y="60.0" fill="#b5563f" font-size="13.5" font-weight="700">核心铁律</text>
+<path d="M353.6 55.0 C409.6 55.0 409.6 38.0 465.6 38.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="478.6" y="43.0" fill="#3f3a36" font-size="12.5" font-weight="700">先定语义方向</text>
+<path d="M353.6 55.0 C409.6 55.0 409.6 72.0 465.6 72.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="478.6" y="77.0" fill="#3f3a36" font-size="12.5" font-weight="700">再辨词义选最匹配</text>
+<path d="M215.6 259.0 C244.6 259.0 244.6 174.0 273.6 174.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="273.6" y="158.0" width="134.0" height="32.0" rx="8" fill="#dfeef5"/>
+<rect x="273.6" y="158.0" width="134.0" height="32.0" rx="8" fill="none" stroke="#2f6f8f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="286.6" y="179.0" fill="#2f6f8f" font-size="13.5" font-weight="700">第一步·语境分析</text>
+<path d="M407.6 174.0 C436.6 174.0 436.6 106.0 465.6 106.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="478.6" y="111.0" fill="#3f3a36" font-size="12.5" font-weight="700">转折→语义相反</text>
+<path d="M407.6 174.0 C436.6 174.0 436.6 140.0 465.6 140.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="478.6" y="145.0" fill="#3f3a36" font-size="12.5" font-weight="700">递进→程度更深</text>
+<path d="M407.6 174.0 C436.6 174.0 436.6 191.0 465.6 191.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="478.6" y="196.0" fill="#3f3a36" font-size="12.5" font-weight="700">并列→语义相近</text>
+<path d="M579.1 191.0 C628.4 191.0 628.4 174.0 677.6 174.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="690.6" y="179.0" fill="#3f3a36" font-size="12.5" font-weight="700">标志：和/与/以及</text>
+<path d="M579.1 191.0 C628.4 191.0 628.4 208.0 677.6 208.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="690.6" y="213.0" fill="#3f3a36" font-size="12.5" font-weight="700">并/且/并且→按递进</text>
+<path d="M407.6 174.0 C436.6 174.0 436.6 242.0 465.6 242.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="478.6" y="247.0" fill="#3f3a36" font-size="12.5" font-weight="700">解释→语义相同</text>
+<path d="M215.6 259.0 C244.6 259.0 244.6 327.0 273.6 327.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="273.6" y="311.0" width="134.0" height="32.0" rx="8" fill="#ece5f6"/>
+<rect x="273.6" y="311.0" width="134.0" height="32.0" rx="8" fill="none" stroke="#7a5ea8" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="286.6" y="332.0" fill="#7a5ea8" font-size="13.5" font-weight="700">第二步·词义辨析</text>
+<path d="M407.6 327.0 C436.6 327.0 436.6 276.0 465.6 276.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="478.6" y="281.0" fill="#3f3a36" font-size="12.5" font-weight="700">语素差异：找不同字</text>
+<path d="M407.6 327.0 C436.6 327.0 436.6 310.0 465.6 310.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="478.6" y="315.0" fill="#3f3a36" font-size="12.5" font-weight="700">程度轻重：批评vs抨击</text>
+<path d="M407.6 327.0 C436.6 327.0 436.6 344.0 465.6 344.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="478.6" y="349.0" fill="#3f3a36" font-size="12.5" font-weight="700">感情色彩：褒贬中</text>
+<path d="M407.6 327.0 C436.6 327.0 436.6 378.0 465.6 378.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="478.6" y="383.0" fill="#3f3a36" font-size="12.5" font-weight="700">搭配习惯：固定搭配</text>
+<path d="M215.6 259.0 C244.6 259.0 244.6 463.0 273.6 463.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="273.6" y="447.0" width="80.0" height="32.0" rx="8" fill="#e2f0e6"/>
+<rect x="273.6" y="447.0" width="80.0" height="32.0" rx="8" fill="none" stroke="#3f7d4f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="286.6" y="468.0" fill="#3f7d4f" font-size="13.5" font-weight="700">高频陷阱</text>
+<path d="M353.6 463.0 C409.6 463.0 409.6 412.0 465.6 412.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="478.6" y="417.0" fill="#3f3a36" font-size="12.5" font-weight="700">只看词义不看语境</text>
+<path d="M353.6 463.0 C409.6 463.0 409.6 446.0 465.6 446.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="478.6" y="451.0" fill="#3f3a36" font-size="12.5" font-weight="700">忽略程度轻重</text>
+<path d="M353.6 463.0 C409.6 463.0 409.6 480.0 465.6 480.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="478.6" y="485.0" fill="#3f3a36" font-size="12.5" font-weight="700">搭配不当</text>
+<path d="M353.6 463.0 C409.6 463.0 409.6 514.0 465.6 514.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="478.6" y="519.0" fill="#3f3a36" font-size="12.5" font-weight="700">望文生义</text>
+</svg>
+</div>
+
 
     <!-- 思维导图 -->
     <div class="mindmap">
@@ -1783,6 +2075,57 @@
   <!-- 十二、下文推断题方法论 -->
   <section id="sec12">
     <h2 class="section-title"><span class="num">12</span>下文推断题方法论（8/17 学）</h2>
+<!-- 树状思维导图 -->
+<div class="mm-tree">
+<svg viewBox="0 0 552 450" width="552" height="450" role="img" aria-label="下文推断题·方法论思维导图" style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;display:block">
+<rect x="0" y="0" width="552" height="450" rx="14" fill="#fbf7f1"/>
+<rect x="22.0" y="184.5" width="145.0" height="64.0" rx="10" fill="#b5563f"/>
+<rect x="22.0" y="184.5" width="145.0" height="64.0" rx="10" fill="none" stroke="#8f3f2c" stroke-width="1.6" stroke-opacity="1.00"/>
+<text x="35.0" y="208.5" fill="#ffffff" font-size="17" font-weight="700">下文推断题</text>
+<text x="35.0" y="234.5" fill="#ffffff" font-size="15" font-weight="700">顺着尾句往下说</text>
+<path d="M167.0 216.5 C196.0 216.5 196.0 55.0 225.0 55.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="225.0" y="39.0" width="80.0" height="32.0" rx="8" fill="#f6e3dc"/>
+<rect x="225.0" y="39.0" width="80.0" height="32.0" rx="8" fill="none" stroke="#b5563f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="238.0" y="60.0" fill="#b5563f" font-size="13.5" font-weight="700">核心铁律</text>
+<path d="M305.0 55.0 C340.8 55.0 340.8 38.0 376.5 38.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="389.5" y="43.0" fill="#3f3a36" font-size="12.5" font-weight="700">尾句分析 + 话题衔接</text>
+<path d="M305.0 55.0 C340.8 55.0 340.8 72.0 376.5 72.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="389.5" y="77.0" fill="#3f3a36" font-size="12.5" font-weight="700">尾句决定下文方向</text>
+<path d="M167.0 216.5 C196.0 216.5 196.0 140.0 225.0 140.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="225.0" y="124.0" width="93.5" height="32.0" rx="8" fill="#dfeef5"/>
+<rect x="225.0" y="124.0" width="93.5" height="32.0" rx="8" fill="none" stroke="#2f6f8f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="238.0" y="145.0" fill="#2f6f8f" font-size="13.5" font-weight="700">做题三步法</text>
+<path d="M318.5 140.0 C347.5 140.0 347.5 106.0 376.5 106.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="389.5" y="111.0" fill="#3f3a36" font-size="12.5" font-weight="700">读尾句：找钩子</text>
+<path d="M318.5 140.0 C347.5 140.0 347.5 140.0 376.5 140.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="389.5" y="145.0" fill="#3f3a36" font-size="12.5" font-weight="700">找衔接：顺话题展开</text>
+<path d="M318.5 140.0 C347.5 140.0 347.5 174.0 376.5 174.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="389.5" y="179.0" fill="#3f3a36" font-size="12.5" font-weight="700">排除：重复/断裂/延伸</text>
+<path d="M167.0 216.5 C196.0 216.5 196.0 259.0 225.0 259.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="225.0" y="243.0" width="80.0" height="32.0" rx="8" fill="#ece5f6"/>
+<rect x="225.0" y="243.0" width="80.0" height="32.0" rx="8" fill="none" stroke="#7a5ea8" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="238.0" y="264.0" fill="#7a5ea8" font-size="13.5" font-weight="700">尾句方向</text>
+<path d="M305.0 259.0 C340.8 259.0 340.8 208.0 376.5 208.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="389.5" y="213.0" fill="#3f3a36" font-size="12.5" font-weight="700">提问题→回答解决</text>
+<path d="M305.0 259.0 C340.8 259.0 340.8 242.0 376.5 242.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="389.5" y="247.0" fill="#3f3a36" font-size="12.5" font-weight="700">提现象→分析原因</text>
+<path d="M305.0 259.0 C340.8 259.0 340.8 276.0 376.5 276.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="389.5" y="281.0" fill="#3f3a36" font-size="12.5" font-weight="700">提新概念→解释它</text>
+<path d="M305.0 259.0 C340.8 259.0 340.8 310.0 376.5 310.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="389.5" y="315.0" fill="#3f3a36" font-size="12.5" font-weight="700">提趋势→展开表现</text>
+<path d="M167.0 216.5 C196.0 216.5 196.0 378.0 225.0 378.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="225.0" y="362.0" width="93.5" height="32.0" rx="8" fill="#e2f0e6"/>
+<rect x="225.0" y="362.0" width="93.5" height="32.0" rx="8" fill="none" stroke="#3f7d4f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="238.0" y="383.0" fill="#3f7d4f" font-size="13.5" font-weight="700">三大排除项</text>
+<path d="M318.5 378.0 C347.5 378.0 347.5 344.0 376.5 344.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="389.5" y="349.0" fill="#3f3a36" font-size="12.5" font-weight="700">前文已述：不会重复</text>
+<path d="M318.5 378.0 C347.5 378.0 347.5 378.0 376.5 378.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="389.5" y="383.0" fill="#3f3a36" font-size="12.5" font-weight="700">话题断裂：无衔接</text>
+<path d="M318.5 378.0 C347.5 378.0 347.5 412.0 376.5 412.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="389.5" y="417.0" fill="#3f3a36" font-size="12.5" font-weight="700">过度延伸：跳跃太大</text>
+</svg>
+</div>
+
 
     <!-- 思维导图 -->
     <div class="mindmap">
@@ -1922,6 +2265,49 @@
 
   <section id="sec13">
     <h2 class="section-title"><span class="num">1</span>核心概念辨析</h2>
+<!-- 树状思维导图 -->
+<div class="mm-tree">
+<svg viewBox="0 0 587 382" width="587" height="382" role="img" aria-label="基期与现期·核心概念思维导图" style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;display:block">
+<rect x="0" y="0" width="587" height="382" rx="14" fill="#fbf7f1"/>
+<rect x="22.0" y="150.5" width="183.1" height="64.0" rx="10" fill="#b5563f"/>
+<rect x="22.0" y="150.5" width="183.1" height="64.0" rx="10" fill="none" stroke="#8f3f2c" stroke-width="1.6" stroke-opacity="1.00"/>
+<text x="35.0" y="174.5" fill="#ffffff" font-size="17" font-weight="700">基期与现期</text>
+<text x="35.0" y="200.5" fill="#ffffff" font-size="15" font-weight="700">两期对比 · 先分清</text>
+<path d="M205.1 182.5 C234.1 182.5 234.1 72.0 263.1 72.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="263.1" y="56.0" width="53.0" height="32.0" rx="8" fill="#f6e3dc"/>
+<rect x="263.1" y="56.0" width="53.0" height="32.0" rx="8" fill="none" stroke="#b5563f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="276.1" y="77.0" fill="#b5563f" font-size="13.5" font-weight="700">现期</text>
+<path d="M316.1 72.0 C365.3 72.0 365.3 38.0 414.6 38.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="427.6" y="43.0" fill="#3f3a36" font-size="12.5" font-weight="700">当前研究的时期</text>
+<path d="M316.1 72.0 C365.3 72.0 365.3 72.0 414.6 72.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="427.6" y="77.0" fill="#3f3a36" font-size="12.5" font-weight="700">直接读到的数</text>
+<path d="M316.1 72.0 C365.3 72.0 365.3 106.0 414.6 106.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="427.6" y="111.0" fill="#3f3a36" font-size="12.5" font-weight="700">信号：今年/本年</text>
+<path d="M205.1 182.5 C234.1 182.5 234.1 174.0 263.1 174.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="263.1" y="158.0" width="53.0" height="32.0" rx="8" fill="#dfeef5"/>
+<rect x="263.1" y="158.0" width="53.0" height="32.0" rx="8" fill="none" stroke="#2f6f8f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="276.1" y="179.0" fill="#2f6f8f" font-size="13.5" font-weight="700">基期</text>
+<path d="M316.1 174.0 C365.3 174.0 365.3 140.0 414.6 140.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="427.6" y="145.0" fill="#3f3a36" font-size="12.5" font-weight="700">对比基准的过去时期</text>
+<path d="M316.1 174.0 C365.3 174.0 365.3 174.0 414.6 174.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="427.6" y="179.0" fill="#3f3a36" font-size="12.5" font-weight="700">信号：上年/同比</text>
+<path d="M316.1 174.0 C365.3 174.0 365.3 208.0 414.6 208.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="427.6" y="213.0" fill="#3f3a36" font-size="12.5" font-weight="700">与…相比/求基期量</text>
+<path d="M205.1 182.5 C234.1 182.5 234.1 293.0 263.1 293.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="263.1" y="277.0" width="93.5" height="32.0" rx="8" fill="#ece5f6"/>
+<rect x="263.1" y="277.0" width="93.5" height="32.0" rx="8" fill="none" stroke="#7a5ea8" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="276.1" y="298.0" fill="#7a5ea8" font-size="13.5" font-weight="700">一秒判定法</text>
+<path d="M356.6 293.0 C385.6 293.0 385.6 242.0 414.6 242.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="427.6" y="247.0" fill="#3f3a36" font-size="12.5" font-weight="700">看提问里的“比”字</text>
+<path d="M356.6 293.0 C385.6 293.0 385.6 276.0 414.6 276.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="427.6" y="281.0" fill="#3f3a36" font-size="12.5" font-weight="700">比谁，谁就是基期</text>
+<path d="M356.6 293.0 C385.6 293.0 385.6 310.0 414.6 310.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="427.6" y="315.0" fill="#3f3a36" font-size="12.5" font-weight="700">被比的就是现期</text>
+<path d="M356.6 293.0 C385.6 293.0 385.6 344.0 414.6 344.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="427.6" y="349.0" fill="#3f3a36" font-size="12.5" font-weight="700">2022基期，2023现期</text>
+</svg>
+</div>
+
 
     <!-- 思维导图 -->
     <div class="mindmap">
@@ -2039,6 +2425,53 @@
 
   <section id="sec17">
     <h2 class="section-title"><span class="num">1</span>什么是截位直除</h2>
+<!-- 树状思维导图 -->
+<div class="mm-tree">
+<svg viewBox="0 0 718 416" width="718" height="416" role="img" aria-label="截位直除·入门思维导图" style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;display:block">
+<rect x="0" y="0" width="718" height="416" rx="14" fill="#fbf7f1"/>
+<rect x="22.0" y="154.8" width="142.6" height="64.0" rx="10" fill="#b5563f"/>
+<rect x="22.0" y="154.8" width="142.6" height="64.0" rx="10" fill="none" stroke="#8f3f2c" stroke-width="1.6" stroke-opacity="1.00"/>
+<text x="35.0" y="178.8" fill="#ffffff" font-size="17" font-weight="700">截位直除</text>
+<text x="35.0" y="204.8" fill="#ffffff" font-size="15" font-weight="700">截短 + 直接除</text>
+<path d="M164.6 186.8 C193.6 186.8 193.6 72.0 222.6 72.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="222.6" y="56.0" width="53.0" height="32.0" rx="8" fill="#f6e3dc"/>
+<rect x="222.6" y="56.0" width="53.0" height="32.0" rx="8" fill="none" stroke="#b5563f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="235.6" y="77.0" fill="#b5563f" font-size="13.5" font-weight="700">定义</text>
+<path d="M275.6 72.0 C318.1 72.0 318.1 38.0 360.6 38.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="373.6" y="43.0" fill="#3f3a36" font-size="12.5" font-weight="700">截去多余位数</text>
+<path d="M275.6 72.0 C318.1 72.0 318.1 72.0 360.6 72.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="373.6" y="77.0" fill="#3f3a36" font-size="12.5" font-weight="700">直接做除法</text>
+<path d="M275.6 72.0 C318.1 72.0 318.1 106.0 360.6 106.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="373.6" y="111.0" fill="#3f3a36" font-size="12.5" font-weight="700">首选速算大法</text>
+<path d="M164.6 186.8 C193.6 186.8 193.6 174.0 222.6 174.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="222.6" y="158.0" width="66.5" height="32.0" rx="8" fill="#dfeef5"/>
+<rect x="222.6" y="158.0" width="66.5" height="32.0" rx="8" fill="none" stroke="#2f6f8f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="235.6" y="179.0" fill="#2f6f8f" font-size="13.5" font-weight="700">一句话</text>
+<path d="M289.1 174.0 C324.9 174.0 324.9 140.0 360.6 140.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="373.6" y="145.0" fill="#3f3a36" font-size="12.5" font-weight="700">截位＝把数字截短</text>
+<path d="M289.1 174.0 C324.9 174.0 324.9 174.0 360.6 174.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="373.6" y="179.0" fill="#3f3a36" font-size="12.5" font-weight="700">直除＝直接做除法</text>
+<path d="M289.1 174.0 C324.9 174.0 324.9 208.0 360.6 208.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="373.6" y="213.0" fill="#3f3a36" font-size="12.5" font-weight="700">分母截短后直接除</text>
+<path d="M164.6 186.8 C193.6 186.8 193.6 301.5 222.6 301.5" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="222.6" y="285.5" width="80.0" height="32.0" rx="8" fill="#ece5f6"/>
+<rect x="222.6" y="285.5" width="80.0" height="32.0" rx="8" fill="none" stroke="#7a5ea8" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="235.6" y="306.5" fill="#7a5ea8" font-size="13.5" font-weight="700">适用场景</text>
+<path d="M302.6 301.5 C331.6 301.5 331.6 242.0 360.6 242.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="373.6" y="247.0" fill="#3f3a36" font-size="12.5" font-weight="700">A÷B型优先</text>
+<path d="M302.6 301.5 C331.6 301.5 331.6 276.0 360.6 276.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="373.6" y="281.0" fill="#3f3a36" font-size="12.5" font-weight="700">基期量、比重、倍数</text>
+<path d="M302.6 301.5 C331.6 301.5 331.6 310.0 360.6 310.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="373.6" y="315.0" fill="#3f3a36" font-size="12.5" font-weight="700">平均数、增长率</text>
+<path d="M302.6 301.5 C331.6 301.5 331.6 361.0 360.6 361.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="373.6" y="366.0" fill="#3f3a36" font-size="12.5" font-weight="700">慎用</text>
+<path d="M411.6 361.0 C484.4 361.0 484.4 344.0 557.1 344.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="570.1" y="349.0" fill="#3f3a36" font-size="12.5" font-weight="700">加减法</text>
+<path d="M411.6 361.0 C484.4 361.0 484.4 378.0 557.1 378.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="570.1" y="383.0" fill="#3f3a36" font-size="12.5" font-weight="700">选项极接近需精确值</text>
+</svg>
+</div>
+
 
     <!-- 思维导图 -->
     <div class="mindmap">
@@ -2216,6 +2649,57 @@
   <!-- 八、个人备考档案 -->
   <section id="sec8">
     <h2 class="section-title"><span class="num">8</span>个人备考档案</h2>
+<!-- 树状思维导图 -->
+<div class="mm-tree">
+<svg viewBox="0 0 711 450" width="711" height="450" role="img" aria-label="个人备考档案·思维导图" style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;display:block">
+<rect x="0" y="0" width="711" height="450" rx="14" fill="#fbf7f1"/>
+<rect x="22.0" y="201.5" width="159.6" height="64.0" rx="10" fill="#b5563f"/>
+<rect x="22.0" y="201.5" width="159.6" height="64.0" rx="10" fill="none" stroke="#8f3f2c" stroke-width="1.6" stroke-opacity="1.00"/>
+<text x="35.0" y="225.5" fill="#ffffff" font-size="17" font-weight="700">个人备考档案</text>
+<text x="35.0" y="251.5" fill="#ffffff" font-size="15" font-weight="700">目标：210分以上</text>
+<path d="M181.6 233.5 C210.6 233.5 210.6 89.0 239.6 89.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="239.6" y="73.0" width="93.5" height="32.0" rx="8" fill="#f6e3dc"/>
+<rect x="239.6" y="73.0" width="93.5" height="32.0" rx="8" fill="none" stroke="#b5563f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="252.6" y="94.0" fill="#b5563f" font-size="13.5" font-weight="700">考试与目标</text>
+<path d="M333.1 89.0 C362.1 89.0 362.1 38.0 391.1 38.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="404.1" y="43.0" fill="#3f3a36" font-size="12.5" font-weight="700">贵州省考</text>
+<path d="M333.1 89.0 C362.1 89.0 362.1 72.0 391.1 72.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="404.1" y="77.0" fill="#3f3a36" font-size="12.5" font-weight="700">事业单位联考</text>
+<path d="M333.1 89.0 C362.1 89.0 362.1 106.0 391.1 106.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="404.1" y="111.0" fill="#3f3a36" font-size="12.5" font-weight="700">300分制</text>
+<path d="M333.1 89.0 C362.1 89.0 362.1 140.0 391.1 140.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="404.1" y="145.0" fill="#3f3a36" font-size="12.5" font-weight="700">目标210分以上</text>
+<path d="M181.6 233.5 C210.6 233.5 210.6 250.5 239.6 250.5" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="239.6" y="234.5" width="80.0" height="32.0" rx="8" fill="#dfeef5"/>
+<rect x="239.6" y="234.5" width="80.0" height="32.0" rx="8" fill="none" stroke="#2f6f8f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="252.6" y="255.5" fill="#2f6f8f" font-size="13.5" font-weight="700">时间安排</text>
+<path d="M319.6 250.5 C355.4 250.5 355.4 208.0 391.1 208.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="404.1" y="213.0" fill="#3f3a36" font-size="12.5" font-weight="700">学习时间</text>
+<path d="M467.1 208.0 C527.4 208.0 527.4 174.0 587.6 174.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="600.6" y="179.0" fill="#3f3a36" font-size="12.5" font-weight="700">工作日2h</text>
+<path d="M467.1 208.0 C527.4 208.0 527.4 208.0 587.6 208.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="600.6" y="213.0" fill="#3f3a36" font-size="12.5" font-weight="700">周四可能0h</text>
+<path d="M467.1 208.0 C527.4 208.0 527.4 242.0 587.6 242.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="600.6" y="247.0" fill="#3f3a36" font-size="12.5" font-weight="700">周末4h</text>
+<path d="M319.6 250.5 C355.4 250.5 355.4 293.0 391.1 293.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="404.1" y="298.0" fill="#3f3a36" font-size="12.5" font-weight="700">复盘时间</text>
+<path d="M467.1 293.0 C527.4 293.0 527.4 276.0 587.6 276.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="600.6" y="281.0" fill="#3f3a36" font-size="12.5" font-weight="700">每天20:00</text>
+<path d="M467.1 293.0 C527.4 293.0 527.4 310.0 587.6 310.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="600.6" y="315.0" fill="#3f3a36" font-size="12.5" font-weight="700">已设定时提醒</text>
+<path d="M181.6 233.5 C210.6 233.5 210.6 378.0 239.6 378.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="239.6" y="362.0" width="80.0" height="32.0" rx="8" fill="#ece5f6"/>
+<rect x="239.6" y="362.0" width="80.0" height="32.0" rx="8" fill="none" stroke="#7a5ea8" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="252.6" y="383.0" fill="#7a5ea8" font-size="13.5" font-weight="700">当前状态</text>
+<path d="M319.6 378.0 C355.4 378.0 355.4 344.0 391.1 344.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="404.1" y="349.0" fill="#3f3a36" font-size="12.5" font-weight="700">初学者</text>
+<path d="M319.6 378.0 C355.4 378.0 355.4 378.0 391.1 378.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="404.1" y="383.0" fill="#3f3a36" font-size="12.5" font-weight="700">资料分析·速算技巧</text>
+<path d="M319.6 378.0 C355.4 378.0 355.4 412.0 391.1 412.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="404.1" y="417.0" fill="#3f3a36" font-size="12.5" font-weight="700">截位直除</text>
+</svg>
+</div>
+
 
     <!-- 思维导图 -->
     <div class="mindmap">

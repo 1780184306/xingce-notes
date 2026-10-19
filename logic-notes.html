@@ -503,6 +503,23 @@
   .bh-orange { background: linear-gradient(135deg, #d97706, #f59e0b); }
   .bh-purple { background: linear-gradient(135deg, #7c3aed, #a855f7); }
 
+  /* ===== 树状思维导图（中心向右逐级延伸，小屏横向滑动） ===== */
+  .mm-tree {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.4rem;
+  }
+  .mm-tree svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 860px;
+  }
+  @media (max-width: 760px) {
+    .mm-tree svg { width: auto; max-width: none; }
+  }
+
   /* Footer */
   footer {
     text-align: center;
@@ -802,6 +819,69 @@
 <!-- ===== Section 1: 模块总览 ===== -->
 <section id="sec1">
   <h2 class="section-title"><span class="num">1</span>判断推理模块总览</h2>
+<!-- 树状思维导图 -->
+<div class="mm-tree">
+<svg viewBox="0 0 780 586" width="780" height="586" role="img" aria-label="判断推理模块·思维导图" style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;display:block">
+<rect x="0" y="0" width="780" height="586" rx="14" fill="#fbf7f1"/>
+<rect x="22.0" y="295.0" width="172.5" height="64.0" rx="10" fill="#b5563f"/>
+<rect x="22.0" y="295.0" width="172.5" height="64.0" rx="10" fill="none" stroke="#8f3f2c" stroke-width="1.6" stroke-opacity="1.00"/>
+<text x="35.0" y="319.0" fill="#ffffff" font-size="17" font-weight="700">判断推理</text>
+<text x="35.0" y="345.0" fill="#ffffff" font-size="15" font-weight="700">识别规律+套用规则</text>
+<path d="M194.5 327.0 C223.5 327.0 223.5 157.0 252.5 157.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="252.5" y="141.0" width="80.0" height="32.0" rx="8" fill="#f6e3dc"/>
+<rect x="252.5" y="141.0" width="80.0" height="32.0" rx="8" fill="none" stroke="#b5563f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="265.5" y="162.0" fill="#b5563f" font-size="13.5" font-weight="700">四大题型</text>
+<path d="M332.5 157.0 C361.5 157.0 361.5 55.0 390.5 55.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="403.5" y="60.0" fill="#3f3a36" font-size="12.5" font-weight="700">图形推理</text>
+<path d="M466.5 55.0 C533.0 55.0 533.0 38.0 599.5 38.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="612.5" y="43.0" fill="#3f3a36" font-size="12.5" font-weight="700">一串图+一个问号</text>
+<path d="M466.5 55.0 C533.0 55.0 533.0 72.0 599.5 72.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="612.5" y="77.0" fill="#3f3a36" font-size="12.5" font-weight="700">找图形的变化规律</text>
+<path d="M332.5 157.0 C361.5 157.0 361.5 123.0 390.5 123.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="403.5" y="128.0" fill="#3f3a36" font-size="12.5" font-weight="700">定义判断</text>
+<path d="M466.5 123.0 C533.0 123.0 533.0 106.0 599.5 106.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="612.5" y="111.0" fill="#3f3a36" font-size="12.5" font-weight="700">一段定义+四个选项</text>
+<path d="M466.5 123.0 C533.0 123.0 533.0 140.0 599.5 140.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="612.5" y="145.0" fill="#3f3a36" font-size="12.5" font-weight="700">判断谁符合/不符合定义</text>
+<path d="M332.5 157.0 C361.5 157.0 361.5 191.0 390.5 191.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="403.5" y="196.0" fill="#3f3a36" font-size="12.5" font-weight="700">类比推理</text>
+<path d="M466.5 191.0 C533.0 191.0 533.0 174.0 599.5 174.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="612.5" y="179.0" fill="#3f3a36" font-size="12.5" font-weight="700">选关系相同的一组</text>
+<path d="M466.5 191.0 C533.0 191.0 533.0 208.0 599.5 208.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="612.5" y="213.0" fill="#3f3a36" font-size="12.5" font-weight="700">找词项之间的关系</text>
+<path d="M332.5 157.0 C361.5 157.0 361.5 259.0 390.5 259.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="403.5" y="264.0" fill="#3f3a36" font-size="12.5" font-weight="700">逻辑判断</text>
+<path d="M466.5 259.0 C533.0 259.0 533.0 242.0 599.5 242.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="612.5" y="247.0" fill="#3f3a36" font-size="12.5" font-weight="700">给一段论述</text>
+<path d="M466.5 259.0 C533.0 259.0 533.0 276.0 599.5 276.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="612.5" y="281.0" fill="#3f3a36" font-size="12.5" font-weight="700">翻译推理、加强削弱</text>
+<path d="M194.5 327.0 C223.5 327.0 223.5 361.0 252.5 361.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="252.5" y="345.0" width="80.0" height="32.0" rx="8" fill="#dfeef5"/>
+<rect x="252.5" y="345.0" width="80.0" height="32.0" rx="8" fill="none" stroke="#2f6f8f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="265.5" y="366.0" fill="#2f6f8f" font-size="13.5" font-weight="700">模块特点</text>
+<path d="M332.5 361.0 C361.5 361.0 361.5 310.0 390.5 310.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="403.5" y="315.0" fill="#3f3a36" font-size="12.5" font-weight="700">行测第三大模块</text>
+<path d="M332.5 361.0 C361.5 361.0 361.5 344.0 390.5 344.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="403.5" y="349.0" fill="#3f3a36" font-size="12.5" font-weight="700">国考约40题</text>
+<path d="M332.5 361.0 C361.5 361.0 361.5 378.0 390.5 378.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="403.5" y="383.0" fill="#3f3a36" font-size="12.5" font-weight="700">省考30～35题</text>
+<path d="M332.5 361.0 C361.5 361.0 361.5 412.0 390.5 412.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="403.5" y="417.0" fill="#3f3a36" font-size="12.5" font-weight="700">不靠算，靠看和推</text>
+<path d="M194.5 327.0 C223.5 327.0 223.5 497.0 252.5 497.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="252.5" y="481.0" width="80.0" height="32.0" rx="8" fill="#ece5f6"/>
+<rect x="252.5" y="481.0" width="80.0" height="32.0" rx="8" fill="none" stroke="#7a5ea8" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="265.5" y="502.0" fill="#7a5ea8" font-size="13.5" font-weight="700">备考主线</text>
+<path d="M332.5 497.0 C361.5 497.0 361.5 446.0 390.5 446.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="403.5" y="451.0" fill="#3f3a36" font-size="12.5" font-weight="700">先定性题型</text>
+<path d="M332.5 497.0 C361.5 497.0 361.5 480.0 390.5 480.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="403.5" y="485.0" fill="#3f3a36" font-size="12.5" font-weight="700">再套对应方法</text>
+<path d="M332.5 497.0 C361.5 497.0 361.5 514.0 390.5 514.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="403.5" y="519.0" fill="#3f3a36" font-size="12.5" font-weight="700">第一步判断属于哪一类</text>
+<path d="M332.5 497.0 C361.5 497.0 361.5 548.0 390.5 548.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="403.5" y="553.0" fill="#3f3a36" font-size="12.5" font-weight="700">定错类越做越远</text>
+</svg>
+</div>
+
 
   <div class="mindmap">
     <div class="mindmap-title">判断推理模块·思维导图</div>
@@ -986,6 +1066,77 @@
 <!-- ===== Section 3: 位置类规律 ===== -->
 <section id="sec3">
   <h2 class="section-title"><span class="num">3</span>位置类规律：平移 / 旋转 / 翻转</h2>
+<!-- 树状思维导图 -->
+<div class="mm-tree">
+<svg viewBox="0 0 708 654" width="708" height="654" role="img" aria-label="位置类规律·思维导图" style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;display:block">
+<rect x="0" y="0" width="708" height="654" rx="14" fill="#fbf7f1"/>
+<rect x="22.0" y="278.0" width="145.0" height="64.0" rx="10" fill="#b5563f"/>
+<rect x="22.0" y="278.0" width="145.0" height="64.0" rx="10" fill="none" stroke="#8f3f2c" stroke-width="1.6" stroke-opacity="1.00"/>
+<text x="35.0" y="302.0" fill="#ffffff" font-size="17" font-weight="700">位置类规律</text>
+<text x="35.0" y="328.0" fill="#ffffff" font-size="15" font-weight="700">元素相同看位置</text>
+<path d="M167.0 310.0 C196.0 310.0 196.0 55.0 225.0 55.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="225.0" y="39.0" width="66.5" height="32.0" rx="8" fill="#f6e3dc"/>
+<rect x="225.0" y="39.0" width="66.5" height="32.0" rx="8" fill="none" stroke="#b5563f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="238.0" y="60.0" fill="#b5563f" font-size="13.5" font-weight="700">怎么认</text>
+<path d="M291.5 55.0 C327.2 55.0 327.2 38.0 363.0 38.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="376.0" y="43.0" fill="#3f3a36" font-size="12.5" font-weight="700">元素组成相同看位置</text>
+<path d="M291.5 55.0 C327.2 55.0 327.2 72.0 363.0 72.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="376.0" y="77.0" fill="#3f3a36" font-size="12.5" font-weight="700">相邻比对找运动轨迹</text>
+<path d="M167.0 310.0 C196.0 310.0 196.0 216.5 225.0 216.5" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="225.0" y="200.5" width="80.0" height="32.0" rx="8" fill="#dfeef5"/>
+<rect x="225.0" y="200.5" width="80.0" height="32.0" rx="8" fill="none" stroke="#2f6f8f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="238.0" y="221.5" fill="#2f6f8f" font-size="13.5" font-weight="700">平移：挪</text>
+<path d="M305.0 216.5 C334.0 216.5 334.0 123.0 363.0 123.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="376.0" y="128.0" fill="#3f3a36" font-size="12.5" font-weight="700">方向</text>
+<path d="M414.0 123.0 C486.8 123.0 486.8 106.0 559.5 106.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="572.5" y="111.0" fill="#3f3a36" font-size="12.5" font-weight="700">上下左右、对角线</text>
+<path d="M414.0 123.0 C486.8 123.0 486.8 140.0 559.5 140.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="572.5" y="145.0" fill="#3f3a36" font-size="12.5" font-weight="700">沿边、绕圈</text>
+<path d="M305.0 216.5 C334.0 216.5 334.0 174.0 363.0 174.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="376.0" y="179.0" fill="#3f3a36" font-size="12.5" font-weight="700">步数</text>
+<path d="M414.0 174.0 C486.8 174.0 486.8 174.0 559.5 174.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="572.5" y="179.0" fill="#3f3a36" font-size="12.5" font-weight="700">常数、等差、周期</text>
+<path d="M305.0 216.5 C334.0 216.5 334.0 225.0 363.0 225.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="376.0" y="230.0" fill="#3f3a36" font-size="12.5" font-weight="700">元素</text>
+<path d="M414.0 225.0 C486.8 225.0 486.8 208.0 559.5 208.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="572.5" y="213.0" fill="#3f3a36" font-size="12.5" font-weight="700">整体一起挪</text>
+<path d="M414.0 225.0 C486.8 225.0 486.8 242.0 559.5 242.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="572.5" y="247.0" fill="#3f3a36" font-size="12.5" font-weight="700">分堆各走各的</text>
+<path d="M305.0 216.5 C334.0 216.5 334.0 310.0 363.0 310.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="376.0" y="315.0" fill="#3f3a36" font-size="12.5" font-weight="700">三个坑</text>
+<path d="M426.5 310.0 C493.0 310.0 493.0 276.0 559.5 276.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="572.5" y="281.0" fill="#3f3a36" font-size="12.5" font-weight="700">绕圈别当没动</text>
+<path d="M426.5 310.0 C493.0 310.0 493.0 310.0 559.5 310.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="572.5" y="315.0" fill="#3f3a36" font-size="12.5" font-weight="700">折返方向跟着变</text>
+<path d="M426.5 310.0 C493.0 310.0 493.0 344.0 559.5 344.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="572.5" y="349.0" fill="#3f3a36" font-size="12.5" font-weight="700">覆盖注意谁压谁</text>
+<path d="M167.0 310.0 C196.0 310.0 196.0 429.0 225.0 429.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="225.0" y="413.0" width="80.0" height="32.0" rx="8" fill="#ece5f6"/>
+<rect x="225.0" y="413.0" width="80.0" height="32.0" rx="8" fill="none" stroke="#7a5ea8" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="238.0" y="434.0" fill="#7a5ea8" font-size="13.5" font-weight="700">旋转：转</text>
+<path d="M305.0 429.0 C334.0 429.0 334.0 378.0 363.0 378.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="376.0" y="383.0" fill="#3f3a36" font-size="12.5" font-weight="700">绕点转，形状不变</text>
+<path d="M305.0 429.0 C334.0 429.0 334.0 412.0 363.0 412.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="376.0" y="417.0" fill="#3f3a36" font-size="12.5" font-weight="700">朝向改变</text>
+<path d="M305.0 429.0 C334.0 429.0 334.0 446.0 363.0 446.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="376.0" y="451.0" fill="#3f3a36" font-size="12.5" font-weight="700">顺/逆时针+角度</text>
+<path d="M305.0 429.0 C334.0 429.0 334.0 480.0 363.0 480.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="376.0" y="485.0" fill="#3f3a36" font-size="12.5" font-weight="700">角度可能每次多转</text>
+<path d="M167.0 310.0 C196.0 310.0 196.0 565.0 225.0 565.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="225.0" y="549.0" width="80.0" height="32.0" rx="8" fill="#e2f0e6"/>
+<rect x="225.0" y="549.0" width="80.0" height="32.0" rx="8" fill="none" stroke="#3f7d4f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="238.0" y="570.0" fill="#3f7d4f" font-size="13.5" font-weight="700">翻转：翻</text>
+<path d="M305.0 565.0 C334.0 565.0 334.0 514.0 363.0 514.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="376.0" y="519.0" fill="#3f3a36" font-size="12.5" font-weight="700">沿轴照镜子</text>
+<path d="M305.0 565.0 C334.0 565.0 334.0 548.0 363.0 548.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="376.0" y="553.0" fill="#3f3a36" font-size="12.5" font-weight="700">看翻哪条轴</text>
+<path d="M305.0 565.0 C334.0 565.0 334.0 582.0 363.0 582.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="376.0" y="587.0" fill="#3f3a36" font-size="12.5" font-weight="700">手性会变：顺变逆</text>
+<path d="M305.0 565.0 C334.0 565.0 334.0 616.0 363.0 616.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="376.0" y="621.0" fill="#3f3a36" font-size="12.5" font-weight="700">时针法区分转翻</text>
+</svg>
+</div>
+
 
   <div class="mindmap">
     <div class="mindmap-title">位置类规律·思维导图</div>
@@ -1255,6 +1406,67 @@
 <!-- ===== Section 4: 样式类规律 ===== -->
 <section id="sec4">
   <h2 class="section-title"><span class="num">4</span>样式类规律：遍历 / 运算</h2>
+<!-- 树状思维导图 -->
+<div class="mm-tree">
+<svg viewBox="0 0 701 586" width="701" height="586" role="img" aria-label="样式类规律·思维导图" style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;display:block">
+<rect x="0" y="0" width="701" height="586" rx="14" fill="#fbf7f1"/>
+<rect x="22.0" y="244.0" width="145.0" height="64.0" rx="10" fill="#b5563f"/>
+<rect x="22.0" y="244.0" width="145.0" height="64.0" rx="10" fill="none" stroke="#8f3f2c" stroke-width="1.6" stroke-opacity="1.00"/>
+<text x="35.0" y="268.0" fill="#ffffff" font-size="17" font-weight="700">样式类规律</text>
+<text x="35.0" y="294.0" fill="#ffffff" font-size="15" font-weight="700">元素相似看样式</text>
+<path d="M167.0 276.0 C196.0 276.0 196.0 55.0 225.0 55.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="225.0" y="39.0" width="66.5" height="32.0" rx="8" fill="#f6e3dc"/>
+<rect x="225.0" y="39.0" width="66.5" height="32.0" rx="8" fill="none" stroke="#b5563f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="238.0" y="60.0" fill="#b5563f" font-size="13.5" font-weight="700">怎么认</text>
+<path d="M291.5 55.0 C347.5 55.0 347.5 38.0 403.5 38.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="416.5" y="43.0" fill="#3f3a36" font-size="12.5" font-weight="700">长得像又各不相同</text>
+<path d="M291.5 55.0 C347.5 55.0 347.5 72.0 403.5 72.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="416.5" y="77.0" fill="#3f3a36" font-size="12.5" font-weight="700">相同里有不同</text>
+<path d="M167.0 276.0 C196.0 276.0 196.0 157.0 225.0 157.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="225.0" y="141.0" width="120.5" height="32.0" rx="8" fill="#dfeef5"/>
+<rect x="225.0" y="141.0" width="120.5" height="32.0" rx="8" fill="none" stroke="#2f6f8f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="238.0" y="162.0" fill="#2f6f8f" font-size="13.5" font-weight="700">遍历：缺啥补啥</text>
+<path d="M345.5 157.0 C374.5 157.0 374.5 106.0 403.5 106.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="416.5" y="111.0" fill="#3f3a36" font-size="12.5" font-weight="700">每行每列各现一次</text>
+<path d="M345.5 157.0 C374.5 157.0 374.5 140.0 403.5 140.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="416.5" y="145.0" fill="#3f3a36" font-size="12.5" font-weight="700">缺了哪种补哪种</text>
+<path d="M345.5 157.0 C374.5 157.0 374.5 174.0 403.5 174.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="416.5" y="179.0" fill="#3f3a36" font-size="12.5" font-weight="700">元素/位置/颜色遍历</text>
+<path d="M345.5 157.0 C374.5 157.0 374.5 208.0 403.5 208.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="416.5" y="213.0" fill="#3f3a36" font-size="12.5" font-weight="700">颜色遍历要数个数</text>
+<path d="M167.0 276.0 C196.0 276.0 196.0 310.0 225.0 310.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="225.0" y="294.0" width="120.5" height="32.0" rx="8" fill="#ece5f6"/>
+<rect x="225.0" y="294.0" width="120.5" height="32.0" rx="8" fill="none" stroke="#7a5ea8" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="238.0" y="315.0" fill="#7a5ea8" font-size="13.5" font-weight="700">运算：加减同异</text>
+<path d="M345.5 310.0 C374.5 310.0 374.5 242.0 403.5 242.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="416.5" y="247.0" fill="#3f3a36" font-size="12.5" font-weight="700">相加：线条全留</text>
+<path d="M345.5 310.0 C374.5 310.0 374.5 276.0 403.5 276.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="416.5" y="281.0" fill="#3f3a36" font-size="12.5" font-weight="700">相减：减去相同部分</text>
+<path d="M345.5 310.0 C374.5 310.0 374.5 310.0 403.5 310.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="416.5" y="315.0" fill="#3f3a36" font-size="12.5" font-weight="700">求异：只留不同</text>
+<path d="M345.5 310.0 C374.5 310.0 374.5 378.0 403.5 378.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="416.5" y="383.0" fill="#3f3a36" font-size="12.5" font-weight="700">求同三考法</text>
+<path d="M492.0 378.0 C547.5 378.0 547.5 344.0 603.0 344.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="616.0" y="349.0" fill="#3f3a36" font-size="12.5" font-weight="700">去异求同</text>
+<path d="M492.0 378.0 C547.5 378.0 547.5 378.0 603.0 378.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="616.0" y="383.0" fill="#3f3a36" font-size="12.5" font-weight="700">整体求同</text>
+<path d="M492.0 378.0 C547.5 378.0 547.5 412.0 603.0 412.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="616.0" y="417.0" fill="#3f3a36" font-size="12.5" font-weight="700">相邻求同</text>
+<path d="M167.0 276.0 C196.0 276.0 196.0 497.0 225.0 497.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="225.0" y="481.0" width="80.0" height="32.0" rx="8" fill="#e2f0e6"/>
+<rect x="225.0" y="481.0" width="80.0" height="32.0" rx="8" fill="none" stroke="#3f7d4f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="238.0" y="502.0" fill="#3f7d4f" font-size="13.5" font-weight="700">黑白运算</text>
+<path d="M305.0 497.0 C354.2 497.0 354.2 446.0 403.5 446.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="416.5" y="451.0" fill="#3f3a36" font-size="12.5" font-weight="700">轮廓相同填充不同</text>
+<path d="M305.0 497.0 C354.2 497.0 354.2 480.0 403.5 480.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="416.5" y="485.0" fill="#3f3a36" font-size="12.5" font-weight="700">按规则表逐格算</text>
+<path d="M305.0 497.0 C354.2 497.0 354.2 514.0 403.5 514.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="416.5" y="519.0" fill="#3f3a36" font-size="12.5" font-weight="700">相同位置才能相加</text>
+<path d="M305.0 497.0 C354.2 497.0 354.2 548.0 403.5 548.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="416.5" y="553.0" fill="#3f3a36" font-size="12.5" font-weight="700">白+黑≠黑+白</text>
+</svg>
+</div>
+
 
   <div class="mindmap">
     <div class="mindmap-title">样式类规律·思维导图</div>
@@ -1495,6 +1707,53 @@
 <!-- ===== Section 5: 汉字 / 字母常见考法 ===== -->
 <section id="sec5">
   <h2 class="section-title"><span class="num">5</span>汉字 / 字母常见考法</h2>
+<!-- 树状思维导图 -->
+<div class="mm-tree">
+<svg viewBox="0 0 568 382" width="568" height="382" role="img" aria-label="汉字字母考法·思维导图" style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;display:block">
+<rect x="0" y="0" width="568" height="382" rx="14" fill="#fbf7f1"/>
+<rect x="22.0" y="159.0" width="162.0" height="64.0" rx="10" fill="#b5563f"/>
+<rect x="22.0" y="159.0" width="162.0" height="64.0" rx="10" fill="none" stroke="#8f3f2c" stroke-width="1.6" stroke-opacity="1.00"/>
+<text x="35.0" y="183.0" fill="#ffffff" font-size="17" font-weight="700">汉字字母考法</text>
+<text x="35.0" y="209.0" fill="#ffffff" font-size="15" font-weight="700">当图形看别想意思</text>
+<path d="M184.0 191.0 C213.0 191.0 213.0 55.0 242.0 55.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="242.0" y="39.0" width="120.5" height="32.0" rx="8" fill="#f6e3dc"/>
+<rect x="242.0" y="39.0" width="120.5" height="32.0" rx="8" fill="none" stroke="#b5563f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="255.0" y="60.0" fill="#b5563f" font-size="13.5" font-weight="700">样式：偏旁部首</text>
+<path d="M362.5 55.0 C391.5 55.0 391.5 38.0 420.5 38.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="433.5" y="43.0" fill="#3f3a36" font-size="12.5" font-weight="700">先找共同偏旁</text>
+<path d="M362.5 55.0 C391.5 55.0 391.5 72.0 420.5 72.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="433.5" y="77.0" fill="#3f3a36" font-size="12.5" font-weight="700">带草字头的植物名</text>
+<path d="M184.0 191.0 C213.0 191.0 213.0 140.0 242.0 140.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="242.0" y="124.0" width="80.0" height="32.0" rx="8" fill="#dfeef5"/>
+<rect x="242.0" y="124.0" width="80.0" height="32.0" rx="8" fill="none" stroke="#2f6f8f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="255.0" y="145.0" fill="#2f6f8f" font-size="13.5" font-weight="700">属性规律</text>
+<path d="M322.0 140.0 C371.2 140.0 371.2 106.0 420.5 106.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="433.5" y="111.0" fill="#3f3a36" font-size="12.5" font-weight="700">开闭性</text>
+<path d="M322.0 140.0 C371.2 140.0 371.2 140.0 420.5 140.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="433.5" y="145.0" fill="#3f3a36" font-size="12.5" font-weight="700">曲直性</text>
+<path d="M322.0 140.0 C371.2 140.0 371.2 174.0 420.5 174.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="433.5" y="179.0" fill="#3f3a36" font-size="12.5" font-weight="700">对称性</text>
+<path d="M184.0 191.0 C213.0 191.0 213.0 242.0 242.0 242.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="242.0" y="226.0" width="80.0" height="32.0" rx="8" fill="#ece5f6"/>
+<rect x="242.0" y="226.0" width="80.0" height="32.0" rx="8" fill="none" stroke="#7a5ea8" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="255.0" y="247.0" fill="#7a5ea8" font-size="13.5" font-weight="700">数量规律</text>
+<path d="M322.0 242.0 C371.2 242.0 371.2 208.0 420.5 208.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="433.5" y="213.0" fill="#3f3a36" font-size="12.5" font-weight="700">笔画数、横竖线</text>
+<path d="M322.0 242.0 C371.2 242.0 371.2 242.0 420.5 242.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="433.5" y="247.0" fill="#3f3a36" font-size="12.5" font-weight="700">面</text>
+<path d="M322.0 242.0 C371.2 242.0 371.2 276.0 420.5 276.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="433.5" y="281.0" fill="#3f3a36" font-size="12.5" font-weight="700">部分数</text>
+<path d="M184.0 191.0 C213.0 191.0 213.0 327.0 242.0 327.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="242.0" y="311.0" width="93.5" height="32.0" rx="8" fill="#e2f0e6"/>
+<rect x="242.0" y="311.0" width="93.5" height="32.0" rx="8" fill="none" stroke="#3f7d4f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="255.0" y="332.0" fill="#3f7d4f" font-size="13.5" font-weight="700">其他与提醒</text>
+<path d="M335.5 327.0 C378.0 327.0 378.0 310.0 420.5 310.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="433.5" y="315.0" fill="#3f3a36" font-size="12.5" font-weight="700">起笔、结构</text>
+<path d="M335.5 327.0 C378.0 327.0 378.0 344.0 420.5 344.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="433.5" y="349.0" fill="#3f3a36" font-size="12.5" font-weight="700">一条不成换下一条</text>
+</svg>
+</div>
+
 
   <div class="mindmap">
     <div class="mindmap-title">汉字字母考法·思维导图</div>
@@ -1578,6 +1837,65 @@
 <!-- ===== Section 6: 属性类规律 ===== -->
 <section id="sec6">
   <h2 class="section-title"><span class="num">6</span>属性类规律：对称 / 曲直 / 开闭</h2>
+<!-- 树状思维导图 -->
+<div class="mm-tree">
+<svg viewBox="0 0 739 552" width="739" height="552" role="img" aria-label="属性类规律·思维导图" style="font-family:'Microsoft YaHei','PingFang SC',sans-serif;display:block">
+<rect x="0" y="0" width="739" height="552" rx="14" fill="#fbf7f1"/>
+<rect x="22.0" y="248.2" width="162.0" height="64.0" rx="10" fill="#b5563f"/>
+<rect x="22.0" y="248.2" width="162.0" height="64.0" rx="10" fill="none" stroke="#8f3f2c" stroke-width="1.6" stroke-opacity="1.00"/>
+<text x="35.0" y="272.2" fill="#ffffff" font-size="17" font-weight="700">属性类规律</text>
+<text x="35.0" y="298.2" fill="#ffffff" font-size="15" font-weight="700">元素凌乱先扫属性</text>
+<path d="M184.0 280.2 C213.0 280.2 213.0 97.5 242.0 97.5" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="242.0" y="81.5" width="66.5" height="32.0" rx="8" fill="#f6e3dc"/>
+<rect x="242.0" y="81.5" width="66.5" height="32.0" rx="8" fill="none" stroke="#b5563f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="255.0" y="102.5" fill="#b5563f" font-size="13.5" font-weight="700">对称性</text>
+<path d="M308.5 97.5 C357.8 97.5 357.8 38.0 407.0 38.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="420.0" y="43.0" fill="#3f3a36" font-size="12.5" font-weight="700">图形规整优先对称</text>
+<path d="M308.5 97.5 C357.8 97.5 357.8 72.0 407.0 72.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="420.0" y="77.0" fill="#3f3a36" font-size="12.5" font-weight="700">等腰、实心、黑白块</text>
+<path d="M308.5 97.5 C357.8 97.5 357.8 157.0 407.0 157.0" fill="none" stroke="#b5563f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="420.0" y="162.0" fill="#3f3a36" font-size="12.5" font-weight="700">四条考法</text>
+<path d="M483.0 157.0 C543.2 157.0 543.2 106.0 603.5 106.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="616.5" y="111.0" fill="#3f3a36" font-size="12.5" font-weight="700">先看是不是对称</text>
+<path d="M483.0 157.0 C543.2 157.0 543.2 140.0 603.5 140.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="616.5" y="145.0" fill="#3f3a36" font-size="12.5" font-weight="700">轴数量递增</text>
+<path d="M483.0 157.0 C543.2 157.0 543.2 174.0 603.5 174.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="616.5" y="179.0" fill="#3f3a36" font-size="12.5" font-weight="700">轴方向45°转</text>
+<path d="M483.0 157.0 C543.2 157.0 543.2 208.0 603.5 208.0" fill="none" stroke="#c9beb2" stroke-width="1.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<text x="616.5" y="213.0" fill="#3f3a36" font-size="12.5" font-weight="700">轴与图形交点数</text>
+<path d="M184.0 280.2 C213.0 280.2 213.0 259.0 242.0 259.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="242.0" y="243.0" width="66.5" height="32.0" rx="8" fill="#dfeef5"/>
+<rect x="242.0" y="243.0" width="66.5" height="32.0" rx="8" fill="none" stroke="#2f6f8f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="255.0" y="264.0" fill="#2f6f8f" font-size="13.5" font-weight="700">曲直性</text>
+<path d="M308.5 259.0 C357.8 259.0 357.8 242.0 407.0 242.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="420.0" y="247.0" fill="#3f3a36" font-size="12.5" font-weight="700">全直、全曲、混合</text>
+<path d="M308.5 259.0 C357.8 259.0 357.8 276.0 407.0 276.0" fill="none" stroke="#2f6f8f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="420.0" y="281.0" fill="#3f3a36" font-size="12.5" font-weight="700">分不出看压与包</text>
+<path d="M184.0 280.2 C213.0 280.2 213.0 344.0 242.0 344.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="242.0" y="328.0" width="66.5" height="32.0" rx="8" fill="#ece5f6"/>
+<rect x="242.0" y="328.0" width="66.5" height="32.0" rx="8" fill="none" stroke="#7a5ea8" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="255.0" y="349.0" fill="#7a5ea8" font-size="13.5" font-weight="700">开闭性</text>
+<path d="M308.5 344.0 C357.8 344.0 357.8 310.0 407.0 310.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="420.0" y="315.0" fill="#3f3a36" font-size="12.5" font-weight="700">封闭：首尾相连</text>
+<path d="M308.5 344.0 C357.8 344.0 357.8 344.0 407.0 344.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="420.0" y="349.0" fill="#3f3a36" font-size="12.5" font-weight="700">开放：有开口</text>
+<path d="M308.5 344.0 C357.8 344.0 357.8 378.0 407.0 378.0" fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="420.0" y="383.0" fill="#3f3a36" font-size="12.5" font-weight="700">半开半闭</text>
+<path d="M184.0 280.2 C213.0 280.2 213.0 463.0 242.0 463.0" fill="none" stroke="#b5563f" stroke-width="2.2" stroke-opacity="0.90" stroke-linecap="round"/>
+<rect x="242.0" y="447.0" width="107.0" height="32.0" rx="8" fill="#e2f0e6"/>
+<rect x="242.0" y="447.0" width="107.0" height="32.0" rx="8" fill="none" stroke="#3f7d4f" stroke-width="1.1" stroke-opacity="0.55"/>
+<text x="255.0" y="468.0" fill="#3f7d4f" font-size="13.5" font-weight="700">整体还是拆开</text>
+<path d="M349.0 463.0 C378.0 463.0 378.0 412.0 407.0 412.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="420.0" y="417.0" fill="#3f3a36" font-size="12.5" font-weight="700">先整体后局部</text>
+<path d="M349.0 463.0 C378.0 463.0 378.0 446.0 407.0 446.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="420.0" y="451.0" fill="#3f3a36" font-size="12.5" font-weight="700">能判就别拆</text>
+<path d="M349.0 463.0 C378.0 463.0 378.0 480.0 407.0 480.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="420.0" y="485.0" fill="#3f3a36" font-size="12.5" font-weight="700">拆开看轴的关系</text>
+<path d="M349.0 463.0 C378.0 463.0 378.0 514.0 407.0 514.0" fill="none" stroke="#3f7d4f" stroke-width="1.6" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="420.0" y="519.0" fill="#3f3a36" font-size="12.5" font-weight="700">属性没规律再数数量</text>
+</svg>
+</div>
+
 
   <div class="mindmap">
     <div class="mindmap-title">属性类规律·思维导图</div>
