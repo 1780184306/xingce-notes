@@ -9,8 +9,8 @@ import os
 import re
 import io
 
-SRC = r"d:\TRAE SOLO CN\workspace\xingce-deploy"
-OUT = r"d:\TRAE SOLO CN\workspace\xingce-deploy\all-in-one.html"
+SRC = os.path.dirname(os.path.abspath(__file__))
+OUT = os.path.join(SRC, "all-in-one.html")
 
 PAGES = [
     ("study",  "study-notes.html",        "言语理解", "📖"),
