@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 """
 把 xingce-deploy 下的三个笔记页合并成单文件 HTML。
-方案：每个子页整体转成 base64 data URI，塞进 srcdoc-free 的 iframe src 里，
-这样 CSS/ID/脚本完全隔离，原页面零改动，且成品是真正的单文件。
+方案：每个子页整体放进 iframe 的 srcdoc 属性（& 和 " 转义），
+这样 CSS/ID/脚本完全隔离，原页面零改动，成品是真正的单文件。
+不用 data: URI 是因为 Chrome 对 iframe 导航的 data: URL 有 2MB 上限，
+判断推理页编码后 7.2MB 会被静默拒绝加载（空白无报错）。
 """
 import base64
 import os
@@ -23,9 +25,8 @@ def read(p):
     with io.open(p, "r", encoding="utf-8") as f:
         return f.read()
 
-def to_data_uri(html):
-    b = html.encode("utf-8")
-    return "data:text/html;charset=utf-8;base64," + base64.b64encode(b).decode("ascii")
+def esc_attr(s):
+    return s.replace("&", "&amp;").replace('"', "&quot;")
 
 frames = []
 tabs = []
@@ -36,10 +37,9 @@ for key, fname, label, icon in PAGES:
     html = read(path)
     # 记录字符数供校验
     meta.append((fname, len(html)))
-    uri = to_data_uri(html)
     frames.append(
-        '<iframe class="page-frame" id="frame-%s" data-key="%s" src="%s" '
-        'title="%s" loading="lazy"></iframe>' % (key, key, uri, label)
+        '<iframe class="page-frame" id="frame-%s" data-key="%s" '
+        'title="%s" srcdoc="%s"></iframe>' % (key, key, label, esc_attr(html))
     )
     tabs.append(
         '<button class="tab" data-target="%s"><span class="tab-icon">%s</span>'
