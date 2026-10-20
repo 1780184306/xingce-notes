@@ -48,7 +48,8 @@ class N(object):
         sub = spec[1] if len(spec) > 1 else None
         kids = spec[2] if len(spec) > 2 else []
         self.label, self.sub, self.depth = label, sub, depth
-        self.lines = [label] + ([sub] if sub else [])
+        # sub 支持 \n 多行（对应 ProcessOn 导图里类目节点的多行特征说明）
+        self.lines = [label] + (sub.split("\n") if sub else [])
         self.fs = 17 if depth == 0 else (13.5 if depth == 1 else 12.5)
         lh = 26 if depth == 0 else 20
         self.w = max(text_w(t, self.fs) for t in self.lines) + PAD_X * 2
