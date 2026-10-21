@@ -1,13 +1,21 @@
 # -*- coding: utf-8 -*-
 """树状思维导图生成器（中心节点 → 向右逐级延伸，贝塞尔连线）。
 
+布局（measure/place 两阶段，2026-10-20 重写）：
+  1. measure：自底向上算每棵子树的占高 ext——叶子 ext=节点高，
+     内部节点 ext=max(自身高, 子ext之和+间距)。
+  2. place：父节点在 [top, top+ext] 内居中，子节点用游标依次落位，
+     兄弟间距 GAP 固定。任何节点按实际高度占位，绝不重叠。
+旧版用固定 ROW_H=34 给叶子编号，2 行叶子（高 58）会挤成一团，
+已废弃。字号同步放大：root 18 / 一级 15 / 叶子 14（副行 -2）。
+
 用法：
   python mind_svg.py apply <笔记.html> <trees.json>   # 按锚点插入
   python mind_svg.py preview <trees.json> <out.html>  # 只生成预览页，不改动笔记
 
 trees.json 格式（数组，每项一棵树）：
   [{
-     "anchor": "<h2 class=\"section-title\"><span class=\"num\">1</span>题型识别",   # 插入锚点：该 h2 起始片段
+     "anchor": "<h2 class=\"section-title\"><span class=\"num\">1</span>题型识别",
      "title": "中心理解题·题型识别思维导图",
      "root": ["中心理解题", "题型识别 · 先看问法", [
         ["问法特征", null, [["“主要意思是”", null, []], ...]],
@@ -31,7 +39,7 @@ PALETTE = [
 ]
 ROOT_FILL, ROOT_STROKE, BG = "#b5563f", "#8f3f2c", "#fbf7f1"
 INK = "#3f3a36"
-ROW_H, COL_GAP, PAD_X, PAD = 34, 58, 13, 22
+GAP, COL_GAP, PAD_X, PAD = 16, 40, 13, 18
 
 
 def esc(s):
@@ -50,25 +58,56 @@ class N(object):
         self.label, self.sub, self.depth = label, sub, depth
         # sub 支持 \n 多行（对应 ProcessOn 导图里类目节点的多行特征说明）
         self.lines = [label] + (sub.split("\n") if sub else [])
-        self.fs = 17 if depth == 0 else (13.5 if depth == 1 else 12.5)
-        lh = 26 if depth == 0 else 20
-        self.w = max(text_w(t, self.fs) for t in self.lines) + PAD_X * 2
-        self.h = lh * len(self.lines) + 12
-        self.lh = lh
+        self.fs = 18 if depth == 0 else (15 if depth == 1 else 14)
+        self.lh = 28 if depth == 0 else 23
+        # 宽度按每行实际字号算：副行 fs-2，比主行窄，盒子不必撑宽
+        self.w = max(text_w(t, self.fs if i == 0 else self.fs - 2)
+                     for i, t in enumerate(self.lines)) + PAD_X * 2
+        self.h = self.lh * len(self.lines) + 12
         self.children = [N(c, depth + 1) for c in kids]
+        self.y = 0.0
 
 
-def layout(n, st):
+def measure(n):
+    """自底向上计算子树占高（含兄弟间距）。"""
     if not n.children:
-        n.y = st["leaf"] * ROW_H
-        st["leaf"] += 1
+        n.ext = float(n.h)
     else:
-        for c in n.children:
-            layout(c, st)
-        n.y = (n.children[0].y + n.children[-1].y) / 2.0
-    st["maxw"][n.depth] = max(st["maxw"].get(n.depth, 0), n.w)
-    st["maxy"] = max(st["maxy"], n.y + n.h / 2)
-    st["miny"] = min(st["miny"], n.y - n.h / 2)
+        tot = sum(measure(c) for c in n.children) + GAP * (len(n.children) - 1)
+        n.ext = max(float(n.h), tot)
+    return n.ext
+
+
+def place(n, top):
+    """在 [top, top+ext] 内放置节点：父居中，子节点游标累加不重叠。"""
+    if not n.children:
+        n.y = top + n.h / 2.0
+        return
+    tot = sum(c.ext for c in n.children) + GAP * (len(n.children) - 1)
+    if tot >= n.h:
+        n.y = top + tot / 2.0
+        start = top
+    else:
+        n.y = top + n.h / 2.0
+        start = top + (n.h - tot) / 2.0
+    cur = start
+    for c in n.children:
+        place(c, cur)
+        cur += c.ext + GAP
+
+
+def _ymin(n):
+    m = n.y - n.h / 2.0
+    for c in n.children:
+        m = min(m, _ymin(c))
+    return m
+
+
+def _ymax(n):
+    m = n.y + n.h / 2.0
+    for c in n.children:
+        m = max(m, _ymax(c))
+    return m
 
 
 def draw(n, out, fam):
@@ -113,30 +152,46 @@ def draw(n, out, fam):
         draw(c, out, cf)
 
 
-def snippet(spec, title):
+def build(spec):
+    """spec → 完成布局的节点树，返回 (root, W, H)。"""
     root = N(spec, 0)
-    st = {"leaf": 0, "maxw": {}, "maxy": 0, "miny": 0}
-    layout(root, st)
-    off = PAD - st["miny"]  # 整体下移，保证顶部内容与画布上边缘留出 PAD
-    def sety(n):
+    measure(root)
+    place(root, 0.0)
+    off = PAD - _ymin(root)  # 整体下移，保证顶部内容与画布上边缘留出 PAD
+
+    def shift(n):
         n.y += off
         for c in n.children:
-            sety(c)
-    sety(root)
+            shift(c)
+    shift(root)
+
+    colw = {}
+
+    def walk(n):
+        colw[n.depth] = max(colw.get(n.depth, 0), n.w)
+        for c in n.children:
+            walk(c)
+    walk(root)
     colx, acc = {}, 0
-    for d in sorted(st["maxw"]):
+    for d in sorted(colw):
         colx[d] = acc
-        acc += st["maxw"][d] + COL_GAP
+        acc += colw[d] + COL_GAP
 
     def setx(n):
         n.x = colx[n.depth] + PAD
         for c in n.children:
             setx(c)
     setx(root)
+
+    W = acc - COL_GAP + PAD * 2
+    H = _ymax(root) + PAD
+    return root, W, H
+
+
+def snippet(spec, title):
+    root, W, H = build(spec)
     out = []
     draw(root, out, 0)
-    W = acc - COL_GAP + PAD * 2
-    H = st["maxy"] + off + PAD
     return (MARK + '\n<div class="mm-tree">\n<svg viewBox="0 0 %.0f %.0f" width="%.0f" height="%.0f" '
             'role="img" aria-label="%s" style="font-family:\'Microsoft YaHei\',\'PingFang SC\',sans-serif;'
             'display:block">\n<rect x="0" y="0" width="%.0f" height="%.0f" rx="14" fill="%s"/>\n%s\n</svg>\n</div>'
@@ -176,7 +231,7 @@ def preview(trees, outp):
     body = "".join(snippet(t["root"], t["title"]) for t in trees)
     io.open(outp, "w", encoding="utf-8").write(
         '<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">'
-        '<meta name="viewport" content="width=device-width,initial-scale=1"><title>预览</title>'
+        '<meta name="viewport" content="width=device-width, initial-scale=1"><title>预览</title>'
         '<style>body{margin:0;padding:24px;background:#f8fafc;font-family:"Microsoft YaHei",sans-serif}'
         '.mm-tree{margin:1.5rem 0;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:.4rem;max-width:980px}'
         '.mm-tree svg{width:100%;height:auto;max-width:860px}'
