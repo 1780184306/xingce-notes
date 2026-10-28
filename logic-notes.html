@@ -3355,9 +3355,15 @@
   });
   overlay.addEventListener('click', closeDrawer);
 
-  // 点击目录项后在移动端自动收起
+  // 点击目录项：显式滚动到目标章节（长文档下浏览器原生的 hash 跳转会被平滑滚动打断，这里兜底）
   links.forEach(function (a) {
-    a.addEventListener('click', function () {
+    a.addEventListener('click', function (e) {
+      var id = (a.getAttribute('href') || '').slice(1);
+      var target = id ? document.getElementById(id) : null;
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ block: 'start' });
+      if (history.replaceState) history.replaceState(null, '', '#' + id);
       if (isMobile()) setTimeout(closeDrawer, 180);
     });
   });
