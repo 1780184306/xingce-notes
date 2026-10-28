@@ -1,0 +1,72 @@
+﻿git : fatal: unable to access 'https://github.com/1780184306/xingce-notes.git/': Failed to connect to github.com port 4
+43 after 21113 ms: Could not connect to server
+At line:15 char:4067
++ ...  | ForEach-Object { git push github master *>> push_retry.log; if ($L ...
++                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (fatal: unable t...nnect to server:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+FAIL attempt 1
+git : fatal: unable to access 'https://github.com/1780184306/xingce-notes.git/': Failed to connect to github.com port 4
+43 after 21101 ms: Could not connect to server
+At line:15 char:4067
++ ...  | ForEach-Object { git push github master *>> push_retry.log; if ($L ...
++                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (fatal: unable t...nnect to server:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+FAIL attempt 2
+git : fatal: unable to access 'https://github.com/1780184306/xingce-notes.git/': Failed to connect to github.com port 4
+43 after 21055 ms: Could not connect to server
+At line:15 char:4067
++ ...  | ForEach-Object { git push github master *>> push_retry.log; if ($L ...
++                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (fatal: unable t...nnect to server:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+FAIL attempt 3
+git : fatal: unable to access 'https://github.com/1780184306/xingce-notes.git/': Failed to connect to github.com port 4
+43 after 21113 ms: Could not connect to server
+At line:15 char:4067
++ ...  | ForEach-Object { git push github master *>> push_retry.log; if ($L ...
++                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (fatal: unable t...nnect to server:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+FAIL attempt 4
+git : fatal: unable to access 'https://github.com/1780184306/xingce-notes.git/': Failed to connect to github.com port 4
+43 after 21116 ms: Could not connect to server
+At line:15 char:4067
++ ...  | ForEach-Object { git push github master *>> push_retry.log; if ($L ...
++                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (fatal: unable t...nnect to server:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+FAIL attempt 5
+git : fatal: unable to access 'https://github.com/1780184306/xingce-notes.git/': Failed to connect to github.com port 4
+43 after 21126 ms: Could not connect to server
+At line:15 char:4067
++ ...  | ForEach-Object { git push github master *>> push_retry.log; if ($L ...
++                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (fatal: unable t...nnect to server:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+FAIL attempt 6
+git : fatal: unable to access 'https://github.com/1780184306/xingce-notes.git/': Failed to connect to github.com port 4
+43 after 21125 ms: Could not connect to server
+At line:15 char:4067
++ ...  | ForEach-Object { git push github master *>> push_retry.log; if ($L ...
++                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (fatal: unable t...nnect to server:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+FAIL attempt 7
+git : To https://github.com/1780184306/xingce-notes.git
+At line:15 char:4067
++ ...  | ForEach-Object { git push github master *>> push_retry.log; if ($L ...
++                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (To https://gith...ingce-notes.git:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+   b4708ee..38de6d6  master -> master
+PUSH_OK attempt 8
