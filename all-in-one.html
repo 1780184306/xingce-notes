@@ -7770,7 +7770,7 @@
 
   /* 本页图片多、base64 解码会让内容高度持续变化，关掉滚动锚定，
      否则浏览器会为了&quot;保持可视内容不动&quot;把目录跳转的滚动顶回去 */
-  body { overflow-anchor: none; }
+  html, body { overflow-anchor: none; }
 
   section[id], h2[id] { scroll-margin-top: 5.5rem; }
 
@@ -10828,57 +10828,102 @@
   }
   if (overlay) overlay.addEventListener('click', closeDrawer);
 
+  // ===== 目录跳转 =====
+  // 本页体积 10MB、图片全是内联 base64：文档高度在图片解码期间一直在变，
+  // 而且页面还在流式下载时，靠后的章节节点可能尚未解析出来。
+  // 因此不用平滑滚动，改成「瞬时定位 + 一小段时间反复校正」，
+  // 并且要等目标节点出现之后再定位。
+
   // 目标位置：章节顶部再往上让出顶部搜索条的高度
-  function sectionTop(target) {
-    var y = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
-    return Math.max(0, target.getBoundingClientRect().top + y - headerOffset());
+  function targetTop(el) {
+    var y = window.scrollY || window.pageYOffset || 0;
+    return Math.max(0, el.getBoundingClientRect().top + y - headerOffset());
   }
 
-  // 点击目录项：显式滚动到目标章节
-  // 本页图片多，解码过程中页面还在变高，平滑滚动可能被&quot;顶回去&quot;或被中断，
-  // 所以在布局稳定后再校正一两次，确保真的停在标题下方
+  // 解除一切可能锁住滚动的状态（抽屉、灯箱都会给 body 加 overflow:hidden）
+  function unlockScroll() {
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+  }
+
+  // 必须用 behavior:'instant'——CSS 里 html{scroll-behavior:smooth}
+  // 会让普通 scrollTo / 写 scrollTop 也变成平滑动画，容易被布局变化打断
+  function applyPos(el) {
+    var y = targetTop(el);
+    try {
+      window.scrollTo({ top: y, left: 0, behavior: 'instant' });
+    } catch (err) {
+      window.scrollTo(0, y);
+    }
+    var se = document.scrollingElement || document.documentElement;
+    if (se &amp;&amp; Math.abs(se.scrollTop - y) > 1) se.scrollTop = y;
+    if (document.body &amp;&amp; Math.abs(document.body.scrollTop - y) > 1) document.body.scrollTop = y;
+  }
+
+  // 用户自己动滚轮 / 手指后就不再抢滚动
+  var userTouched = false;
+  ['wheel', 'touchstart'].forEach(function (ev) {
+    window.addEventListener(ev, function () { userTouched = true; }, { passive: true });
+  });
+
+  // 立即定位；随后只要文档高度还在变（图片还在解码）就继续校正，
+  // 否则会停在&quot;当时能滚到的最远处&quot;。用户一动滚轮就立刻停手。
+  function jumpTo(id) {
+    var el = document.getElementById(id);
+    if (!el) return false;
+    userTouched = false;
+    applyPos(el);
+    var t0 = Date.now();
+    var lastH = document.documentElement.scrollHeight;
+    var stable = 0;
+    var timer = setInterval(function () {
+      if (userTouched || Date.now() - t0 > 10000) { clearInterval(timer); return; }
+      var h = document.documentElement.scrollHeight;
+      var off = Math.abs(el.getBoundingClientRect().top - headerOffset());
+      var quick = Date.now() - t0 < 1500;      // 前 1.5s：只要没到位就纠正
+      if (off > 2 &amp;&amp; (quick || h !== lastH)) {  // 之后：只在布局变化时纠正，避免跟用户抢滚动
+        applyPos(el);
+        stable = 0;
+      } else if (!quick) {
+        if (h === lastH) { if (++stable >= 6) { clearInterval(timer); return; } }
+        else stable = 0;
+      }
+      lastH = h;
+    }, 120);
+    return true;
+  }
+
+  // 页面还在下载时目标章节可能还没解析出来——等它出现再跳
+  function jumpWhenReady(id) {
+    if (jumpTo(id)) return;
+    var started = Date.now();
+    var t = setInterval(function () {
+      if (jumpTo(id) || Date.now() - started > 10000) clearInterval(t);
+    }, 150);
+  }
+
   links.forEach(function (a, i) {
     a.addEventListener('click', function (e) {
       var id = (a.getAttribute('href') || '').slice(1);
-      var target = id ? document.getElementById(id) : null;
-      if (!target) return;
-      e.preventDefault();
-      // 抽屉/灯箱可能把 body 锁死，先解锁，否则任何滚动都不会生效
-      document.body.style.overflow = '';
+      if (!id) return;
+      e.preventDefault();          // 一律拦掉原生锚点，落点自己控制
+      unlockScroll();
       setActive(i);
-
-      var want = sectionTop(target);
-      try {
-        window.scrollTo({ top: want, behavior: 'smooth' });
-      } catch (err) {
-        window.scrollTo(0, want);
-      }
-
-      // 用户自己动了滚轮 / 手指，就不再强行校正
-      var moved = false;
-      function markMoved() { moved = true; }
-      window.addEventListener('wheel', markMoved, { passive: true });
-      window.addEventListener('touchstart', markMoved, { passive: true });
-
-      [450, 1100].forEach(function (delay, k) {
-        setTimeout(function () {
-          if (moved) return;
-          var got = window.scrollY || window.pageYOffset || 0;
-          var now = sectionTop(target);
-          if (Math.abs(got - now) > 24) window.scrollTo(0, now);
-          if (k === 1) {
-            window.removeEventListener('wheel', markMoved);
-            window.removeEventListener('touchstart', markMoved);
-          }
-        }, delay);
-      });
-
+      jumpWhenReady(id);
       try {
         if (history.replaceState) history.replaceState(null, '', '#' + id);
+        else location.hash = id;
       } catch (err) { /* 嵌入 srcdoc / file:// 等受限环境会抛 SecurityError */ }
       if (isMobile()) setTimeout(closeDrawer, 180);
     });
   });
+
+  // 带 #hash 直接打开时，等布局稳定后再校正一次落点
+  if (location.hash &amp;&amp; location.hash.length > 1) {
+    window.addEventListener('load', function () {
+      if (!userTouched) jumpTo(location.hash.slice(1));
+    });
+  }
 
   // ESC 关闭抽屉
   document.addEventListener('keydown', function (e) {
