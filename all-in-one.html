@@ -7768,6 +7768,10 @@
     margin-bottom: 0.6rem;
   }
 
+  /* 本页图片多、base64 解码会让内容高度持续变化，关掉滚动锚定，
+     否则浏览器会为了&quot;保持可视内容不动&quot;把目录跳转的滚动顶回去 */
+  body { overflow-anchor: none; }
+
   section[id], h2[id] { scroll-margin-top: 5.5rem; }
 
   /* 中等屏幕：缩窄侧边栏 */
@@ -10824,7 +10828,15 @@
   }
   if (overlay) overlay.addEventListener('click', closeDrawer);
 
-  // 点击目录项：显式滚动到目标章节（长文档下浏览器原生的 hash 跳转会被平滑滚动打断，这里兜底）
+  // 目标位置：章节顶部再往上让出顶部搜索条的高度
+  function sectionTop(target) {
+    var y = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+    return Math.max(0, target.getBoundingClientRect().top + y - headerOffset());
+  }
+
+  // 点击目录项：显式滚动到目标章节
+  // 本页图片多，解码过程中页面还在变高，平滑滚动可能被&quot;顶回去&quot;或被中断，
+  // 所以在布局稳定后再校正一两次，确保真的停在标题下方
   links.forEach(function (a, i) {
     a.addEventListener('click', function (e) {
       var id = (a.getAttribute('href') || '').slice(1);
@@ -10833,15 +10845,34 @@
       e.preventDefault();
       // 抽屉/灯箱可能把 body 锁死，先解锁，否则任何滚动都不会生效
       document.body.style.overflow = '';
-      var y = (window.scrollY || document.documentElement.scrollTop || 0);
-      var top = target.getBoundingClientRect().top + y - headerOffset();
-      if (top < 0) top = 0;
-      try {
-        window.scrollTo({ top: top, behavior: 'smooth' });
-      } catch (err) {
-        window.scrollTo(0, top);
-      }
       setActive(i);
+
+      var want = sectionTop(target);
+      try {
+        window.scrollTo({ top: want, behavior: 'smooth' });
+      } catch (err) {
+        window.scrollTo(0, want);
+      }
+
+      // 用户自己动了滚轮 / 手指，就不再强行校正
+      var moved = false;
+      function markMoved() { moved = true; }
+      window.addEventListener('wheel', markMoved, { passive: true });
+      window.addEventListener('touchstart', markMoved, { passive: true });
+
+      [450, 1100].forEach(function (delay, k) {
+        setTimeout(function () {
+          if (moved) return;
+          var got = window.scrollY || window.pageYOffset || 0;
+          var now = sectionTop(target);
+          if (Math.abs(got - now) > 24) window.scrollTo(0, now);
+          if (k === 1) {
+            window.removeEventListener('wheel', markMoved);
+            window.removeEventListener('touchstart', markMoved);
+          }
+        }, delay);
+      });
+
       try {
         if (history.replaceState) history.replaceState(null, '', '#' + id);
       } catch (err) { /* 嵌入 srcdoc / file:// 等受限环境会抛 SecurityError */ }
